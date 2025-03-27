@@ -2,12 +2,14 @@
    ===============  GLOBALE EINSTELLUNGEN  =================
    ========================================================= */
 
-   body {
+body {
     /* Großes Papier-Hintergrundbild für die gesamte Seite */
     background-image: url("imgaes/background/paperBackgroundBIG.png");
     background-size: cover;
-    font-family: "Rye", serif;  /* Western-Style-Schriftart aus Google Fonts */
-    font-weight: normal;        /* Kein Bold – normaler Schriftgrad */
+    font-family: "Rye", serif;
+    /* Western-Style-Schriftart aus Google Fonts */
+    font-weight: normal;
+    /* Kein Bold – normaler Schriftgrad */
     margin: 0;
     padding: 0;
 
@@ -26,12 +28,14 @@
    ========================================================= */
 
 #navBarBackground {
-    position: fixed;  /* Bleibt beim Scrollen oben */
+    position: fixed;
+    /* Bleibt beim Scrollen oben */
     top: 0;
     left: 0;
     width: 100%;
     height: 180px;
-    z-index: 1000;    /* Stets im Vordergrund */
+    z-index: 1000;
+    /* Stets im Vordergrund */
 
     /* Papier-Hintergrund (180px hoch) für die Navbar */
     background: url("imgaes/background/paperBackground.png") repeat-x center;
@@ -40,7 +44,8 @@
 /* Container für Logo und Links in der Navbar */
 .navBarContainer {
     display: flex;
-    justify-content: space-evenly;  /* Gleichmäßige Verteilung der Elemente */
+    justify-content: space-evenly;
+    /* Gleichmäßige Verteilung der Elemente */
     align-items: center;
     height: 100%;
 }
@@ -65,13 +70,15 @@
 
 .hero {
     width: 100%;
-    margin-bottom: 40px; /* Abstand zum nächsten Element (z. B. Ornament) */
+    margin-bottom: 40px;
+    /* Abstand zum nächsten Element (z. B. Ornament) */
 }
 
 .hero img {
     width: 100%;
     height: auto;
-    display: block; /* Entfernt potenzielle Lücken um das Bild */
+    display: block;
+    /* Entfernt potenzielle Lücken um das Bild */
 }
 
 /* =========================================================
@@ -80,7 +87,8 @@
 
 .ornament {
     text-align: center;
-    margin-bottom: 40px; /* Abstand zum Zick-Zack-Layout oder anderem Inhalt */
+    margin-bottom: 40px;
+    /* Abstand zum Zick-Zack-Layout oder anderem Inhalt */
 }
 
 .ornament img {
@@ -94,14 +102,17 @@
 
 .zigzag-section {
     max-width: 1200px;
-    margin: 0 auto;  /* Zentriert den Inhalt */
-    padding: 0 20px; /* Kleiner Seitenabstand für mobile Geräte */
+    margin: 0 auto;
+    /* Zentriert den Inhalt */
+    padding: 0 20px;
+    /* Kleiner Seitenabstand für mobile Geräte */
 }
 
 .zigzag-item {
     display: flex;
     align-items: center;
-    margin-bottom: 60px; /* Abstand zwischen den Blöcken */
+    margin-bottom: 60px;
+    /* Abstand zwischen den Blöcken */
 }
 
 /* Bild und Text innerhalb eines Zick-Zack-Blocks */
@@ -141,7 +152,7 @@
 /* Titelbereich auf der Buchen-Seite */
 .buchen-title {
     text-align: center;
-    margin: 40px 0; 
+    margin: 40px 0;
 }
 
 .buchen-title h1 {
@@ -152,37 +163,37 @@
 .buchen-map-section {
     display: flex;
     justify-content: center;
-    margin: 40px 0; 
+    margin: 40px 0;
 }
 
 .buchen-map-section img {
-    max-width: 80%; 
+    max-width: 80%;
     height: auto;
 }
 
 .buchen-ornament {
-    position: absolute; 
-    top: 250px;         
-    width: 100px;       
+    position: absolute;
+    top: 250px;
+    width: 100px;
     height: auto;
-    z-index: 10;  
+    z-index: 10;
 }
 
-.ornament-left img{
+.ornament-left img {
     position: absolute;
     top: 660px;
     left: 960px;
-    height: 150px; 
+    height: 150px;
     width: 800px;
     transform: rotate(-90deg) scaleX(-1);
     transform-origin: center center;
 }
 
-.ornament-right img{
+.ornament-right img {
     position: absolute;
     top: 660px;
     left: -240px;
-    height: 150px; 
+    height: 150px;
     width: 800px;
     transform: rotate(90deg) scaleX(-1);
     transform-origin: center center;
@@ -193,7 +204,8 @@
    ========================================================= */
 
 footer {
-    background-color: #000;  /* Schwarzer Hintergrund */
+    background-color: #000;
+    /* Schwarzer Hintergrund */
     color: #fff;
     text-align: center;
     padding: 20px 0;
@@ -210,7 +222,8 @@ footer {
 }
 
 .social-media img {
-    width: 30px;   /* Einheitliche Größe für Icons */
+    width: 30px;
+    /* Einheitliche Größe für Icons */
     height: 30px;
 }
 
