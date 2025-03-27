@@ -34,7 +34,7 @@
     z-index: 1000;    /* Stets im Vordergrund */
 
     /* Papier-Hintergrund (180px hoch) für die Navbar */
-    background: url("imgaes/paperBackground.png") repeat-x center;
+    background: url("imgaes/background/paperBackground.png") repeat-x center;
 }
 
 /* Container für Logo und Links in der Navbar */
