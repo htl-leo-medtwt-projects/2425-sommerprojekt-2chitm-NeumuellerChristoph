@@ -199,6 +199,41 @@ body {
     transform-origin: center center;
 }
 
+/* ==================== ERLEBEN-SEITE (SIDE SCROLL) ==================== */
+
+
+.erleben-title {
+    text-align: center;
+    margin: 40px 0;
+  }
+  
+  .erleben-title h1 {
+    font-size: 48px;
+    font-weight: normal; 
+  }
+  
+  .scroll-container {
+    display: flex;          
+    overflow-x: auto;     
+    gap: 20px;              
+    padding: 20px;          
+    margin: 0 40px;         
+    scroll-behavior: smooth;
+  }
+  
+  .scroll-item {
+    flex: 0 0 auto;        
+    width: 300px;           
+    border: 2px solid #000; 
+  }
+  
+  .scroll-item img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  
+
 /* =========================================================
    ======================  FOOTER  ==========================
    ========================================================= */
