@@ -145,7 +145,7 @@
 }
 
 .buchen-title h1 {
-    font-size: 48px;
+    font-size: 60px;
     font-weight: normal;
 }
 
@@ -165,13 +165,13 @@
     top: 250px;         
     width: 100px;       
     height: auto;
-    z-index: 10;        
+    z-index: 10;  
 }
 
 .ornament-left img{
     position: absolute;
-    top: 890px;
-    left: 950px;
+    top: 660px;
+    left: 960px;
     height: 150px; 
     width: 800px;
     transform: rotate(-90deg) scaleX(-1);
@@ -179,8 +179,11 @@
 }
 
 .ornament-right img{
-    height: 200px; 
-    width: 1000px;
+    position: absolute;
+    top: 660px;
+    left: -240px;
+    height: 150px; 
+    width: 800px;
     transform: rotate(90deg) scaleX(-1);
     transform-origin: center center;
 }
