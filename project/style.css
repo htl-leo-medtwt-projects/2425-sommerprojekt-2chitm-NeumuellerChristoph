@@ -158,7 +158,6 @@
 .buchen-map-section img {
     max-width: 80%; 
     height: auto;
-    border: 2px solid #000; 
 }
 
 .buchen-ornament {
@@ -169,12 +168,21 @@
     z-index: 10;        
 }
 
-.ornament-left {
-    left: 50px; 
+.ornament-left img{
+    position: absolute;
+    top: 890px;
+    left: 950px;
+    height: 150px; 
+    width: 800px;
+    transform: rotate(-90deg) scaleX(-1);
+    transform-origin: center center;
 }
 
-.ornament-right {
-    right: 50px;
+.ornament-right img{
+    height: 200px; 
+    width: 1000px;
+    transform: rotate(90deg) scaleX(-1);
+    transform-origin: center center;
 }
 
 /* =========================================================
