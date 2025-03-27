@@ -23,7 +23,7 @@ body {
     z-index: 1000;     /* Immer im Vordergrund */
 
     /* Eigenes Papier-Hintergrundbild für die Navbar (genau 180px hoch) */
-    background: url("imgaes/paperBackground.png") repeat-x center;
+    background: url("imgaes/background/paperBackground.png") repeat-x center;
 }
 
 .navBarContainer {
@@ -71,6 +71,10 @@ body {
 .ornament img {
     /* Bei Bedarf Größe anpassen, z.B.: width: 300px; */
     height: auto;
+}
+.footer-ornament img{
+    width: 70vw;
+    margin-left: 15vw;
 }
 
 /* =======================================
