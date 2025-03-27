@@ -1,0 +1,140 @@
+/* =======================================
+   Global: Basis-Styles und Hintergrund
+   ======================================= */
+   body {
+    background-image: url("imgaes/background/paperBackgroundBIG.png");
+    background-size: cover;
+    font-family: "Rye", serif;
+    margin: 0;
+    padding: 0;
+    padding-top: 180px; /* Platz für die fixierte NavBar */
+}
+
+/* =======================================
+   Navigation: Fixierte Nav-Bar
+   ======================================= */
+#navBarBackground {
+    position: fixed;   /* Bleibt immer oben */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 180px;
+    z-index: 1000;     /* Immer im Vordergrund */
+}
+
+.navBarContainer {
+    display: flex;
+    justify-content: space-evenly;  /* Gleichmäßige Verteilung */
+    align-items: center;
+    height: 100%;
+}
+
+.navBarContainer a {
+    font-size: 48px;
+    color: black;
+    text-decoration: none;
+}
+
+#navBarLogo {
+    height: 126px;
+    width: 126px;
+}
+
+/* =======================================
+   Hero-Bereich: Großes Bild unter der Nav-Bar
+   ======================================= */
+.hero {
+    width: 100%;
+    margin-bottom: 40px; /* Abstand zum Ornament */
+}
+
+.hero img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* =======================================
+   Ornament: Schwarze Verschnörklung
+   ======================================= */
+.ornament {
+    text-align: center;
+    margin-bottom: 40px; /* Abstand zum Zick-Zack-Layout */
+}
+
+.ornament img {
+    /* Du kannst hier bei Bedarf eine Breite definieren, z.B. */
+    /* width: 200px; */
+    height: auto;
+}
+
+/* =======================================
+   Zick-Zack-Layout
+   ======================================= */
+.zigzag-section {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.zigzag-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 60px;
+}
+
+.zigzag-image, .zigzag-text {
+    flex: 1;
+    padding: 20px;
+}
+
+.zigzag-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Die Klasse 'reverse' kehrt die Reihenfolge um (Text links, Bild rechts) */
+.zigzag-item.reverse {
+    flex-direction: row-reverse;
+}
+
+.zigzag-text h2 {
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+.zigzag-text p {
+    font-size: 18px;
+    line-height: 1.6;
+}
+
+/* =======================================
+   Footer-Bereich
+   ======================================= */
+footer {
+    background-color: #000;
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
+    margin-top: 40px;
+}
+
+.social-media {
+    margin-bottom: 10px;
+}
+
+.social-media a {
+    margin: 0 10px;
+    display: inline-block;
+}
+
+.social-media img {
+    width: 30px;
+    height: 30px;
+}
+
+footer p {
+    font-size: 14px;
+    margin-top: 5px;
+}
