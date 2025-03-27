@@ -1,31 +1,43 @@
-/* =======================================
-   Globale Einstellungen
-   ======================================= */
-/* Ich verwende ein großes Papier-Hintergrundbild für den Seitenhintergrund */
-body {
+/* =========================================================
+   ===============  GLOBALE EINSTELLUNGEN  =================
+   ========================================================= */
+
+   body {
+    /* Großes Papier-Hintergrundbild für die gesamte Seite */
     background-image: url("imgaes/background/paperBackgroundBIG.png");
     background-size: cover;
-    font-family: "Rye", serif;  /* Die Schriftart 'Rye' von Google Fonts */
+    font-family: "Rye", serif;  /* Western-Style-Schriftart aus Google Fonts */
+    font-weight: normal;        /* Kein Bold – normaler Schriftgrad */
     margin: 0;
     padding: 0;
-    padding-top: 180px; /* Platz für die fixierte Nav-Bar */
+
+    /* Platz für die fixierte Nav-Bar, damit der Inhalt nicht dahinter verschwindet */
+    padding-top: 180px;
 }
 
-/* =======================================
-   Fixierte Navigationsleiste
-   ======================================= */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* =========================================================
+   ==================  NAVIGATION (NAVBAR)  =================
+   ========================================================= */
+
 #navBarBackground {
-    position: fixed;   /* Bleibt beim Scrollen oben */
+    position: fixed;  /* Bleibt beim Scrollen oben */
     top: 0;
     left: 0;
     width: 100%;
     height: 180px;
-    z-index: 1000;     /* Immer im Vordergrund */
+    z-index: 1000;    /* Stets im Vordergrund */
 
-    /* Eigenes Papier-Hintergrundbild für die Navbar (genau 180px hoch) */
-    background: url("imgaes/background/paperBackground.png") repeat-x center;
+    /* Papier-Hintergrund (180px hoch) für die Navbar */
+    background: url("imgaes/paperBackground.png") repeat-x center;
 }
 
+/* Container für Logo und Links in der Navbar */
 .navBarContainer {
     display: flex;
     justify-content: space-evenly;  /* Gleichmäßige Verteilung der Elemente */
@@ -33,9 +45,10 @@ body {
     height: 100%;
 }
 
-/* Große, auffällige Schrift für die Navigationslinks */
+/* Navigationslinks: Große Schrift, aber ohne Bold */
 .navBarContainer a {
     font-size: 48px;
+    font-weight: normal;
     color: black;
     text-decoration: none;
 }
@@ -46,55 +59,55 @@ body {
     width: 126px;
 }
 
-/* =======================================
-   Hero-Bereich: Großes Bild
-   ======================================= */
+/* =========================================================
+   =====================  HERO-BEREICH  =====================
+   ========================================================= */
+
 .hero {
     width: 100%;
-    margin-bottom: 40px; /* Abstand zum Ornament */
+    margin-bottom: 40px; /* Abstand zum nächsten Element (z. B. Ornament) */
 }
 
 .hero img {
     width: 100%;
     height: auto;
-    display: block; /* Entfernt eventuelle weiße Zwischenräume */
+    display: block; /* Entfernt potenzielle Lücken um das Bild */
 }
 
-/* =======================================
-   Ornament: Schwarze Verschnörklung
-   ======================================= */
+/* =========================================================
+   ====================  ORNAMENT-BEREICH  ==================
+   ========================================================= */
+
 .ornament {
     text-align: center;
-    margin-bottom: 40px; /* Abstand zum Zick-Zack-Layout */
+    margin-bottom: 40px; /* Abstand zum Zick-Zack-Layout oder anderem Inhalt */
 }
 
 .ornament img {
-    /* Bei Bedarf Größe anpassen, z.B.: width: 300px; */
+    /* Falls nötig, hier Größe anpassen, z. B. width: 300px; */
     height: auto;
 }
-.footer-ornament img{
-    width: 70vw;
-    margin-left: 15vw;
-}
 
-/* =======================================
-   Zick-Zack-Layout: Abwechselnd Bild/Text
-   ======================================= */
+/* =========================================================
+   ==================  ZICK-ZACK-LAYOUT  ====================
+   ========================================================= */
+
 .zigzag-section {
     max-width: 1200px;
     margin: 0 auto;  /* Zentriert den Inhalt */
-    padding: 0 20px; /* Kleiner Seitenabstand */
+    padding: 0 20px; /* Kleiner Seitenabstand für mobile Geräte */
 }
 
-/* Jeder Zick-Zack-Block: Bild + Text */
 .zigzag-item {
     display: flex;
     align-items: center;
     margin-bottom: 60px; /* Abstand zwischen den Blöcken */
 }
 
-.zigzag-image, .zigzag-text {
-    flex: 1;      /* Beide nehmen gleich viel Platz ein */
+/* Bild und Text innerhalb eines Zick-Zack-Blocks */
+.zigzag-image,
+.zigzag-text {
+    flex: 1;
     padding: 20px;
 }
 
@@ -109,20 +122,67 @@ body {
     flex-direction: row-reverse;
 }
 
-/* Überschriften und Text */
 .zigzag-text h2 {
     font-size: 36px;
     margin-bottom: 20px;
+    font-weight: normal;
 }
 
 .zigzag-text p {
     font-size: 18px;
     line-height: 1.6;
+    font-weight: normal;
 }
 
-/* =======================================
-   Footer
-   ======================================= */
+/* =========================================================
+   ===================  BUCHEN-UNTERSEITE  ==================
+   ========================================================= */
+
+/* Titelbereich auf der Buchen-Seite */
+.buchen-title {
+    text-align: center;
+    margin: 40px 0; /* Abstand nach oben und unten */
+}
+
+.buchen-title h1 {
+    font-size: 48px;
+    font-weight: normal;
+}
+
+/* Zentrales Karten-Bild auf der Buchen-Seite */
+.buchen-map-section {
+    display: flex;
+    justify-content: center;
+    margin: 40px 0; /* Abstand vor und nach der Karte */
+}
+
+.buchen-map-section img {
+    max-width: 80%;  /* oder eine feste Breite, z. B. 600px */
+    height: auto;
+    border: 2px solid #000; /* Leichter Rahmen für Western-Flair */
+}
+
+/* Ornamente für die Buchen-Seite (falls links/rechts Deko gewünscht) */
+.buchen-ornament {
+    position: absolute; /* Nur, wenn du sie absolut platzieren willst */
+    top: 250px;         /* Passe diesen Wert an, damit das Ornament richtig sitzt */
+    width: 100px;       /* Beispielbreite */
+    height: auto;
+    z-index: 10;        /* Vor dem Hintergrund, hinter der Navbar */
+}
+
+.ornament-left {
+    left: 50px;  /* Abstand vom linken Rand */
+}
+
+.ornament-right {
+    right: 50px; /* Abstand vom rechten Rand */
+}
+
+/* =========================================================
+   ======================  FOOTER  ==========================
+   ========================================================= */
+
 footer {
     background-color: #000;  /* Schwarzer Hintergrund */
     color: #fff;
@@ -141,7 +201,7 @@ footer {
 }
 
 .social-media img {
-    width: 30px;   /* Einheitliche Icon-Größe */
+    width: 30px;   /* Einheitliche Größe für Icons */
     height: 30px;
 }
 
