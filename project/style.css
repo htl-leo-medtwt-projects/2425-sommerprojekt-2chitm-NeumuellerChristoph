@@ -141,7 +141,7 @@
 /* Titelbereich auf der Buchen-Seite */
 .buchen-title {
     text-align: center;
-    margin: 40px 0; /* Abstand nach oben und unten */
+    margin: 40px 0; 
 }
 
 .buchen-title h1 {
@@ -149,34 +149,32 @@
     font-weight: normal;
 }
 
-/* Zentrales Karten-Bild auf der Buchen-Seite */
 .buchen-map-section {
     display: flex;
     justify-content: center;
-    margin: 40px 0; /* Abstand vor und nach der Karte */
+    margin: 40px 0; 
 }
 
 .buchen-map-section img {
-    max-width: 80%;  /* oder eine feste Breite, z. B. 600px */
+    max-width: 80%; 
     height: auto;
-    border: 2px solid #000; /* Leichter Rahmen für Western-Flair */
+    border: 2px solid #000; 
 }
 
-/* Ornamente für die Buchen-Seite (falls links/rechts Deko gewünscht) */
 .buchen-ornament {
-    position: absolute; /* Nur, wenn du sie absolut platzieren willst */
-    top: 250px;         /* Passe diesen Wert an, damit das Ornament richtig sitzt */
-    width: 100px;       /* Beispielbreite */
+    position: absolute; 
+    top: 250px;         
+    width: 100px;       
     height: auto;
-    z-index: 10;        /* Vor dem Hintergrund, hinter der Navbar */
+    z-index: 10;        
 }
 
 .ornament-left {
-    left: 50px;  /* Abstand vom linken Rand */
+    left: 50px; 
 }
 
 .ornament-right {
-    right: 50px; /* Abstand vom rechten Rand */
+    right: 50px;
 }
 
 /* =========================================================
