@@ -1,47 +1,53 @@
 /* =======================================
-   Global: Basis-Styles und Hintergrund
+   Globale Einstellungen
    ======================================= */
-   body {
+/* Ich verwende ein großes Papier-Hintergrundbild für den Seitenhintergrund */
+body {
     background-image: url("imgaes/background/paperBackgroundBIG.png");
     background-size: cover;
-    font-family: "Rye", serif;
+    font-family: "Rye", serif;  /* Die Schriftart 'Rye' von Google Fonts */
     margin: 0;
     padding: 0;
-    padding-top: 180px; /* Platz für die fixierte NavBar */
+    padding-top: 180px; /* Platz für die fixierte Nav-Bar */
 }
 
 /* =======================================
-   Navigation: Fixierte Nav-Bar
+   Fixierte Navigationsleiste
    ======================================= */
 #navBarBackground {
-    position: fixed;   /* Bleibt immer oben */
+    position: fixed;   /* Bleibt beim Scrollen oben */
     top: 0;
     left: 0;
     width: 100%;
     height: 180px;
     z-index: 1000;     /* Immer im Vordergrund */
+
+    /* Eigenes Papier-Hintergrundbild für die Navbar (genau 180px hoch) */
+    background: url("imgaes/paperBackground.png") repeat-x center;
 }
 
 .navBarContainer {
     display: flex;
-    justify-content: space-evenly;  /* Gleichmäßige Verteilung */
+    justify-content: space-evenly;  /* Gleichmäßige Verteilung der Elemente */
     align-items: center;
     height: 100%;
 }
 
+/* Große, auffällige Schrift für die Navigationslinks */
 .navBarContainer a {
     font-size: 48px;
     color: black;
     text-decoration: none;
 }
 
+/* Logo in der Navbar */
 #navBarLogo {
     height: 126px;
     width: 126px;
 }
 
 /* =======================================
-   Hero-Bereich: Großes Bild unter der Nav-Bar
+   Hero-Bereich: Großes Bild
    ======================================= */
 .hero {
     width: 100%;
@@ -51,7 +57,7 @@
 .hero img {
     width: 100%;
     height: auto;
-    display: block;
+    display: block; /* Entfernt eventuelle weiße Zwischenräume */
 }
 
 /* =======================================
@@ -63,28 +69,28 @@
 }
 
 .ornament img {
-    /* Du kannst hier bei Bedarf eine Breite definieren, z.B. */
-    /* width: 200px; */
+    /* Bei Bedarf Größe anpassen, z.B.: width: 300px; */
     height: auto;
 }
 
 /* =======================================
-   Zick-Zack-Layout
+   Zick-Zack-Layout: Abwechselnd Bild/Text
    ======================================= */
 .zigzag-section {
     max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
+    margin: 0 auto;  /* Zentriert den Inhalt */
+    padding: 0 20px; /* Kleiner Seitenabstand */
 }
 
+/* Jeder Zick-Zack-Block: Bild + Text */
 .zigzag-item {
     display: flex;
     align-items: center;
-    margin-bottom: 60px;
+    margin-bottom: 60px; /* Abstand zwischen den Blöcken */
 }
 
 .zigzag-image, .zigzag-text {
-    flex: 1;
+    flex: 1;      /* Beide nehmen gleich viel Platz ein */
     padding: 20px;
 }
 
@@ -94,11 +100,12 @@
     display: block;
 }
 
-/* Die Klasse 'reverse' kehrt die Reihenfolge um (Text links, Bild rechts) */
+/* 'reverse' kehrt die Reihenfolge um (Text links, Bild rechts) */
 .zigzag-item.reverse {
     flex-direction: row-reverse;
 }
 
+/* Überschriften und Text */
 .zigzag-text h2 {
     font-size: 36px;
     margin-bottom: 20px;
@@ -110,10 +117,10 @@
 }
 
 /* =======================================
-   Footer-Bereich
+   Footer
    ======================================= */
 footer {
-    background-color: #000;
+    background-color: #000;  /* Schwarzer Hintergrund */
     color: #fff;
     text-align: center;
     padding: 20px 0;
@@ -130,7 +137,7 @@ footer {
 }
 
 .social-media img {
-    width: 30px;
+    width: 30px;   /* Einheitliche Icon-Größe */
     height: 30px;
 }
 
