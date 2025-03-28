@@ -201,7 +201,6 @@ body {
 
 /* ==================== ERLEBEN-SEITE (SIDE SCROLL) ==================== */
 
-
 .erleben-title {
     text-align: center;
     margin: 40px 0;
@@ -215,16 +214,19 @@ body {
   .scroll-container {
     display: flex;          
     overflow-x: auto;     
-    gap: 20px;              
-    padding: 20px;          
+    gap: 20px;             
+    padding: 20px;        
     margin: 0 40px;         
     scroll-behavior: smooth;
   }
   
   .scroll-item {
-    flex: 0 0 auto;        
-    width: 300px;           
-    border: 2px solid #000; 
+    flex: 0 0 auto;         
+    width: 400px;          
+  }
+  
+  .scroll-item:nth-child(2) {
+    width: 450px;          
   }
   
   .scroll-item img {
