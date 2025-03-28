@@ -7,13 +7,10 @@ body {
     background-image: url("imgaes/background/paperBackgroundBIG.png");
     background-size: cover;
     font-family: "Rye", serif;
-    /* Western-Style-Schriftart aus Google Fonts */
     font-weight: normal;
-    /* Kein Bold – normaler Schriftgrad */
     margin: 0;
     padding: 0;
 
-    /* Platz für die fixierte Nav-Bar, damit der Inhalt nicht dahinter verschwindet */
     padding-top: 180px;
 }
 
@@ -35,22 +32,17 @@ body {
     width: 100%;
     height: 180px;
     z-index: 1000;
-    /* Stets im Vordergrund */
 
-    /* Papier-Hintergrund (180px hoch) für die Navbar */
     background: url("imgaes/background/paperBackground.png") repeat-x center;
 }
 
-/* Container für Logo und Links in der Navbar */
 .navBarContainer {
     display: flex;
     justify-content: space-evenly;
-    /* Gleichmäßige Verteilung der Elemente */
     align-items: center;
     height: 100%;
 }
 
-/* Navigationslinks: Große Schrift, aber ohne Bold */
 .navBarContainer a {
     font-size: 48px;
     font-weight: normal;
@@ -58,7 +50,6 @@ body {
     text-decoration: none;
 }
 
-/* Logo in der Navbar */
 #navBarLogo {
     height: 126px;
     width: 126px;
@@ -71,14 +62,12 @@ body {
 .hero {
     width: 100%;
     margin-bottom: 40px;
-    /* Abstand zum nächsten Element (z. B. Ornament) */
 }
 
 .hero img {
     width: 100%;
     height: auto;
     display: block;
-    /* Entfernt potenzielle Lücken um das Bild */
 }
 
 /* =========================================================
@@ -88,11 +77,9 @@ body {
 .ornament {
     text-align: center;
     margin-bottom: 40px;
-    /* Abstand zum Zick-Zack-Layout oder anderem Inhalt */
 }
 
 .ornament img {
-    /* Falls nötig, hier Größe anpassen, z. B. width: 300px; */
     height: auto;
 }
 
@@ -103,19 +90,15 @@ body {
 .zigzag-section {
     max-width: 1200px;
     margin: 0 auto;
-    /* Zentriert den Inhalt */
     padding: 0 20px;
-    /* Kleiner Seitenabstand für mobile Geräte */
 }
 
 .zigzag-item {
     display: flex;
     align-items: center;
     margin-bottom: 60px;
-    /* Abstand zwischen den Blöcken */
 }
 
-/* Bild und Text innerhalb eines Zick-Zack-Blocks */
 .zigzag-image,
 .zigzag-text {
     flex: 1;
@@ -128,7 +111,6 @@ body {
     display: block;
 }
 
-/* 'reverse' kehrt die Reihenfolge um (Text links, Bild rechts) */
 .zigzag-item.reverse {
     flex-direction: row-reverse;
 }
@@ -149,7 +131,6 @@ body {
    ===================  BUCHEN-UNTERSEITE  ==================
    ========================================================= */
 
-/* Titelbereich auf der Buchen-Seite */
 .buchen-title {
     text-align: center;
     margin: 40px 0;
