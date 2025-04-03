@@ -223,7 +223,6 @@ body {
 
 footer {
     background-color: #000;
-    /* Schwarzer Hintergrund */
     color: #fff;
     text-align: center;
     padding: 20px 0;
@@ -241,7 +240,6 @@ footer {
 
 .social-media img {
     width: 30px;
-    /* Einheitliche Größe für Icons */
     height: 30px;
 }
 
