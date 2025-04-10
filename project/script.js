@@ -162,7 +162,7 @@ document.addEventListener("DOMContentLoaded", function() {
 // MiniGame-Funktionalität (nur auf der MiniGame-Seite ausführen)
 document.addEventListener("DOMContentLoaded", function() {
     const minigameContainer = document.getElementById("minigameContainer");
-    if (!minigameContainer) return; // Nur auf MiniGame-Seite ausführen
+    if (!minigameContainer) return; 
 
     const startBtn = document.getElementById("startMinigame");
     const countdownEl = document.getElementById("countdown");
@@ -175,7 +175,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // Starte den Countdown (3, 2, 1)
     function startCountdown() {
-        // Während Countdown: Platten sollen leicht transparent sein
+        
         gameArea.classList.add("countdown-mode");
         startBtn.classList.add("hidden");
         countdownEl.classList.remove("hidden");
@@ -188,7 +188,7 @@ document.addEventListener("DOMContentLoaded", function() {
             } else {
                 clearInterval(countdownInterval);
                 countdownEl.classList.add("hidden");
-                // Countdown beendet – jetzt entfernt man die Transparenz
+                
                 gameArea.classList.remove("countdown-mode");
                 startGame();
             }
@@ -205,7 +205,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // Aktiviert zufällig eine Platte aus den noch verfügbaren
     function activateNextPlate() {
-        // Deaktiviere alle Platten
+        
         plates.forEach(plate => {
             plate.classList.remove("active");
             plate.dataset.clicked = "";
@@ -235,7 +235,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 reactionTimes.push(reactionTime);
                 plate.dataset.clicked = "true";
                 plate.classList.remove("active");
-                // Es wird bewusst kein direkter Text auf der Platte angezeigt.
+                
                 activateNextPlate();
             }
         });
