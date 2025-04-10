@@ -2,7 +2,7 @@
    ===============  GLOBALE EINSTELLUNGEN  =================
    ========================================================= */
 
-body {
+   body {
     /* Großes Papier-Hintergrundbild für die gesamte Seite */
     background-image: url("imgaes/background/paperBackgroundBIG.png");
     background-size: cover;
@@ -10,7 +10,6 @@ body {
     font-weight: normal;
     margin: 0;
     padding: 0;
-
     padding-top: 180px;
 }
 
@@ -26,13 +25,11 @@ body {
 
 #navBarBackground {
     position: fixed;
-    /* Bleibt beim Scrollen oben */
     top: 0;
     left: 0;
     width: 100%;
     height: 180px;
     z-index: 1000;
-
     background: url("imgaes/background/paperBackground.png") repeat-x center;
 }
 
@@ -180,59 +177,59 @@ body {
     transform-origin: center center;
 }
 
-/* ================================================================
-   ======================  Erleben Site  ==========================
-   ================================================================ */
+/* =========================================================
+   ======================  ERLEBEN SITE  ====================
+   ========================================================= */
 
 .erleben-title {
     text-align: center;
     margin: 40px 0;
-  }
-  .erleben-title h1 {
+}
+
+.erleben-title h1 {
     font-size: 48px;
-    font-weight: normal; 
-  }
-  
-  .scroll-container {
-    display: flex;          
-    overflow-x: auto;     
-    gap: 20px;             
-    padding: 20px;        
-    margin: 0 40px;         
+    font-weight: normal;
+}
+
+.scroll-container {
+    display: flex;
+    overflow-x: auto;
+    gap: 20px;
+    padding: 20px;
+    margin: 0 40px;
     scroll-behavior: smooth;
-  }
-  
-  .scroll-item {
-    flex: 0 0 auto;         
-    width: 400px;          
-  }
-  
-  .scroll-item:nth-child(2) {
-    width: 450px;          
-  }
-  
-  .scroll-item img {
+}
+
+.scroll-item {
+    flex: 0 0 auto;
+    width: 400px;
+}
+
+.scroll-item:nth-child(2) {
+    width: 450px;
+}
+
+.scroll-item img {
     width: 100%;
     height: auto;
     display: block;
-  }
-  
+}
 
-  /* =========================================================
-   ====================== KULINARIK ==========================
-   =========================================================== */
+/* =========================================================
+   ======================  KULINARIK  ======================
+   ========================================================= */
 
-  #kulinarikIMG  {
+#kulinarikIMG  {
     width: 52.5vw;
     height: auto;
     margin-top: -9vh;
     margin-left: -3vw;
     transform: rotate(5.17deg);
-  }
-  .noScroll {
-    overflow: hidden;
-  }
+}
 
+.noScroll {
+    overflow: hidden;
+}
 
 /* =========================================================
    ======================  FOOTER  =========================
@@ -263,4 +260,94 @@ footer {
 footer p {
     font-size: 14px;
     margin-top: 5px;
+}
+
+/* =========================================================
+   ==============  BUCHUNGS-PANEL (ERWEITERT)  ============
+   ========================================================= */
+
+#bookingPanel {
+    position: fixed;
+    top: 0;
+    left: -350px; /* Start außerhalb des Sichtbereichs (links) */
+    width: 350px;
+    height: 100%;
+    background-color: #fff;
+    box-shadow: 2px 0 5px rgba(0,0,0,0.3);
+    padding: 20px;
+    transition: left 0.5s ease;
+    z-index: 2000;
+}
+
+#bookingPanel.active {
+    left: 0;
+}
+
+/* Header des Panels */
+#bookingHeader {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#bookingHeader .roundImage {
+    display: block;
+    margin: 0 auto;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+}
+
+/* Kalenderbereich im Panel */
+#bookingCalendar h3 {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+#bookingCalendar ul {
+    list-style: none;
+    margin-bottom: 10px;
+    padding: 0;
+}
+
+#bookingCalendar li {
+    padding: 5px;
+    border-bottom: 1px solid #ccc;
+    font-size: 16px;
+}
+
+#bookingCalendar label {
+    display: block;
+    margin: 10px 0 5px;
+    font-size: 16px;
+}
+
+#bookingCalendar input[type="date"],
+#bookingCalendar input[type="text"] {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+#bookingCalendar button {
+    width: 100%;
+    padding: 10px;
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+#bookingCalendar button:hover {
+    background-color: #0056b3;
+}
+
+#bookingMessage {
+    text-align: center;
+    margin-top: 10px;
+    color: red;
 }

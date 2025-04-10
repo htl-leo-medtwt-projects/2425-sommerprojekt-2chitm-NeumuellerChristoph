@@ -11,6 +11,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Rye&display=swap" rel="stylesheet">
   </head>
   <body>
+    <!-- Navigation -->
     <div id="navBarBackground">
       <div class="navBarContainer">
         <img id="navBarLogo" src="imgaes/logo/roundLogoTipi.png" alt="ZeilerBerg Camping Logo">
@@ -21,25 +22,26 @@
       </div>
     </div>
 
+    <!-- Buchen-Titel -->
     <section class="buchen-title">
       <h1>BUCHE DIE BESTEN STELLPLÄTZE</h1>
     </section>
     
+    <!-- Ornaments -->
     <div class="ornament-left">
       <img src="imgaes/schnörkel/schnorkel2.png" alt="Ornament links">
     </div>
-    
     <div class="ornament-right">
       <img src="imgaes/schnörkel/schnorkel2.png" alt="Ornament rechts">
     </div>
     
+    <!-- Bild als Auslöser für das Booking Panel -->
     <section class="buchen-map-section">
-      <!-- Bild wird als Auslöser für das Panel genutzt -->
       <img id="campingMap" src="imgaes/map/Map.png" alt="Karte vom Campingplatz">
     </section>
     
-    <!-- Booking Panel -->
-    <div id="bookingPanel" class="hidden">
+    <!-- Booking Panel, das von links hereinschiebt -->
+    <div id="bookingPanel">
       <div id="bookingHeader">
         <img src="imgaes/logo/roundLogoTipi.png" alt="Booking Image" class="roundImage">
         <h2>Stellplatz A</h2>
@@ -47,6 +49,7 @@
       <div id="bookingCalendar">
         <h3>Kalender</h3>
         <ul id="bookingList"></ul>
+        <!-- Labels für die Input-Felder -->
         <label for="bookingDate">Datum:</label>
         <input type="date" id="bookingDate">
         <label for="bookingDescription">Beschreibung:</label>
