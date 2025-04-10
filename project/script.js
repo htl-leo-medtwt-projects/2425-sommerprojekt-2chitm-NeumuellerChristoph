@@ -1,3 +1,14 @@
+// scroll shrink
+window.addEventListener("scroll", function() {
+    const navBar = document.getElementById("navBarBackground");
+    if(window.scrollY > 50) {  // Schwellwert; kann angepasst werden
+        navBar.classList.add("shrink");
+    } else {
+        navBar.classList.remove("shrink");
+    }
+});
+
+
 document.addEventListener("DOMContentLoaded", function () {
     const mapImage = document.getElementById("campingMap");
     const bookingPanel = document.getElementById("bookingPanel");
@@ -22,7 +33,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
     displayBookings();
   
-    // Neue Buchung hinzufügen, wenn Datum noch frei
+    // Neue Buchung hinzufügen, wenn Datum frei ist
     addBookingButton.addEventListener("click", function(){
       const dateInput = document.getElementById("bookingDate").value;
       const descriptionInput = document.getElementById("bookingDescription").value.trim();

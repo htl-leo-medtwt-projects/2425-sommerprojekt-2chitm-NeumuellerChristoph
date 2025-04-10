@@ -30,6 +30,7 @@
     width: 100%;
     height: 180px;
     z-index: 1000;
+    transition: height 0.5s ease;
     background: url("imgaes/background/paperBackground.png") repeat-x center;
 }
 
@@ -50,6 +51,24 @@
 #navBarLogo {
     height: 126px;
     width: 126px;
+}
+
+/* Reduzierte Höhe: 40% kleiner (von 180px auf ca. 108px) */
+#navBarBackground.shrink {
+    height: 108px;
+}
+
+/* Standard-Logo-Größe */
+#navBarLogo {
+    height: 126px;
+    width: 126px;
+    transition: height 0.5s ease, width 0.5s ease;
+}
+
+/* Verkleinertes Logo bei gescrollter Navbar (40 % kleiner, ca. 75px) */
+#navBarBackground.shrink #navBarLogo {
+    height: 75px;
+    width: 75px;
 }
 
 /* =========================================================
@@ -145,7 +164,8 @@
 }
 
 .buchen-map-section img {
-    max-width: 80%;
+    margin-top: 9vh;
+    max-width: 75%;
     height: auto;
 }
 
