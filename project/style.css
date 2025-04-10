@@ -2,7 +2,7 @@
    ===============  GLOBALE EINSTELLUNGEN  =================
    ========================================================= */
 
-   body {
+body {
     /* Großes Papier-Hintergrundbild für die gesamte Seite */
     background-image: url("imgaes/background/paperBackgroundBIG.png");
     background-size: cover;
@@ -93,6 +93,7 @@
 .ornament {
     text-align: center;
     margin-bottom: 40px;
+
 }
 
 .ornament img {
@@ -239,7 +240,7 @@
    ======================  KULINARIK  ======================
    ========================================================= */
 
-#kulinarikIMG  {
+#kulinarikIMG {
     width: 52.5vw;
     height: auto;
     margin-top: -9vh;
@@ -276,6 +277,10 @@ footer {
     width: 30px;
     height: 30px;
 }
+.footer-ornament img{
+    width: 90vw;
+    margin-left: 5vw;
+}
 
 footer p {
     font-size: 14px;
@@ -289,11 +294,12 @@ footer p {
 #bookingPanel {
     position: fixed;
     top: 0;
-    left: -350px; /* Start außerhalb des Sichtbereichs (links) */
+    left: -350px;
+    /* Start außerhalb des Sichtbereichs (links) */
     width: 350px;
     height: 100%;
     background-color: #fff;
-    box-shadow: 2px 0 5px rgba(0,0,0,0.3);
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.3);
     padding: 20px;
     transition: left 0.5s ease;
     z-index: 2000;
@@ -375,7 +381,7 @@ footer p {
 /* ============================================================
    =================   MINIGAME-STYLES   ======================
    ============================================================ */
-   #minigameContainer {
+#minigameContainer {
     text-align: center;
     padding: 100px 20px;
 }
@@ -401,7 +407,6 @@ footer p {
     margin-bottom: 20px;
 }
 
-/* Verstecken von Elementen */
 .hidden {
     display: none;
 }
@@ -411,12 +416,10 @@ footer p {
     margin-bottom: 20px;
 }
 
-/* Spielbereich */
 #gameArea {
     margin-bottom: 20px;
 }
 
-/* Standardmäßig: Platten voll opak */
 .game-plate {
     width: 150px;
     height: 150px;
@@ -431,12 +434,10 @@ footer p {
     transition: opacity 0.5s ease;
 }
 
-/* Während des Countdowns: Platten werden leicht transparent */
 .countdown-mode .game-plate {
     opacity: 0.5;
 }
 
-/* Der Punkt in der Mitte: grau (wird bei Aktivierung gelb) */
 .plate-dot {
     width: 30px;
     height: 30px;
@@ -444,7 +445,6 @@ footer p {
     border-radius: 50%;
 }
 
-/* Bei aktiver Platte wird der Dot gelb */
 .game-plate.active .plate-dot {
     background-color: yellow;
 }
@@ -454,7 +454,6 @@ footer p {
     margin-top: 20px;
 }
 
-/* Reihenanordnung */
 .game-row {
     display: flex;
     justify-content: center;
