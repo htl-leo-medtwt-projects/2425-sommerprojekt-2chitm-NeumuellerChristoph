@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Zeilerberg Camping</title>
@@ -10,37 +9,51 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Rye&display=swap" rel="stylesheet">
-</head>
-
-<body>
+  </head>
+  <body>
     <div id="navBarBackground">
-        <div class="navBarContainer">
-            <img id="navBarLogo" src="imgaes/logo/roundLogoTipi.png" alt="ZeilerBerg Camping Logo">
-            <a href="buchen.html">BUCHEN</a>
-            <a href="miniGame.html">MINIGAME</a>
-            <a href="erleben.html">ERLEBEN</a>
-            <a href="kulinarik.html">KULINARIK</a>
-        </div>
+      <div class="navBarContainer">
+        <img id="navBarLogo" src="imgaes/logo/roundLogoTipi.png" alt="ZeilerBerg Camping Logo">
+        <a href="buchen.html">BUCHEN</a>
+        <a href="miniGame.html">MINIGAME</a>
+        <a href="erleben.html">ERLEBEN</a>
+        <a href="kulinarik.html">KULINARIK</a>
+      </div>
     </div>
 
     <section class="buchen-title">
-        <h1>BUCHE DIE BESTEN STELLPLÄTZE</h1>
+      <h1>BUCHE DIE BESTEN STELLPLÄTZE</h1>
     </section>
-
-    <!-- Linkes Ornament -->
+    
     <div class="ornament-left">
-        <img src="imgaes/schnörkel/schnorkel2.png" alt="Ornament links">
+      <img src="imgaes/schnörkel/schnorkel2.png" alt="Ornament links">
     </div>
-
-    <!-- Rechtes Ornament -->
+    
     <div class="ornament-right">
-        <img src="imgaes/schnörkel/schnorkel2.png" alt="Ornament rechts">
+      <img src="imgaes/schnörkel/schnorkel2.png" alt="Ornament rechts">
     </div>
-
+    
     <section class="buchen-map-section">
-        <img src="imgaes/map/Map.png" alt="Karte vom Campingplatz">
+      <!-- Bild wird als Auslöser für das Panel genutzt -->
+      <img id="campingMap" src="imgaes/map/Map.png" alt="Karte vom Campingplatz">
     </section>
-
-</body>
-
+    
+    <!-- Booking Panel -->
+    <div id="bookingPanel" class="hidden">
+      <div id="bookingHeader">
+        <img src="imgaes/logo/roundLogoTipi.png" alt="Booking Image" class="roundImage">
+        <h2>Stellplatz A</h2>
+      </div>
+      <div id="bookingCalendar">
+        <h3>Kalender</h3>
+        <ul id="bookingList"></ul>
+        <label for="bookingDate">Datum:</label>
+        <input type="date" id="bookingDate">
+        <label for="bookingDescription">Beschreibung:</label>
+        <input type="text" id="bookingDescription" placeholder="Buchungsbeschreibung">
+        <button id="addBooking">Buchen</button>
+        <p id="bookingMessage"></p>
+      </div>
+    </div>
+  </body>
 </html>
