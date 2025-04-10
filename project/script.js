@@ -38,7 +38,7 @@ document.addEventListener("DOMContentLoaded", function () {
     displayBookings();
 
     // Neue Buchung hinzufügen, wenn Datum frei ist
-    addBookingButton.addEventListener("click", function(){
+    addBookingButton.addEventListener("click", function(){ 
       const dateInput = document.getElementById("bookingDate").value;
       const descriptionInput = document.getElementById("bookingDescription").value.trim();
 
