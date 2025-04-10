@@ -180,7 +180,7 @@
 .ornament-left img {
     position: absolute;
     top: 660px;
-    left: 960px;
+    left: 980px;
     height: 150px;
     width: 800px;
     transform: rotate(-90deg) scaleX(-1);
@@ -190,7 +190,7 @@
 .ornament-right img {
     position: absolute;
     top: 660px;
-    left: -240px;
+    left: -260px;
     height: 150px;
     width: 800px;
     transform: rotate(90deg) scaleX(-1);
