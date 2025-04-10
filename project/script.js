@@ -154,3 +154,100 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     }
 });
+
+//   **************************************************************
+//   MiniGame-Funktionalität (nur auf der MiniGame-Seite ausführen)
+//   **************************************************************
+
+// MiniGame-Funktionalität (nur auf der MiniGame-Seite ausführen)
+document.addEventListener("DOMContentLoaded", function() {
+    const minigameContainer = document.getElementById("minigameContainer");
+    if (!minigameContainer) return; // Nur auf MiniGame-Seite ausführen
+
+    const startBtn = document.getElementById("startMinigame");
+    const countdownEl = document.getElementById("countdown");
+    const gameArea = document.getElementById("gameArea");
+    const resultEl = document.getElementById("result");
+    const plates = document.querySelectorAll(".game-plate");
+    
+    let reactionTimes = [];
+    let remainingPlateIndices = [];
+
+    // Starte den Countdown (3, 2, 1)
+    function startCountdown() {
+        // Während Countdown: Platten sollen leicht transparent sein
+        gameArea.classList.add("countdown-mode");
+        startBtn.classList.add("hidden");
+        countdownEl.classList.remove("hidden");
+        let count = 3;
+        countdownEl.textContent = "GET READY " + count;
+        const countdownInterval = setInterval(() => {
+            count--;
+            if (count > 0) {
+                countdownEl.textContent = "GET READY " + count;
+            } else {
+                clearInterval(countdownInterval);
+                countdownEl.classList.add("hidden");
+                // Countdown beendet – jetzt entfernt man die Transparenz
+                gameArea.classList.remove("countdown-mode");
+                startGame();
+            }
+        }, 1000);
+    }
+
+    // Spielstart: Initialisiere den Array der verfügbaren Platten
+    function startGame() {
+        gameArea.classList.remove("hidden");
+        reactionTimes = [];
+        remainingPlateIndices = Array.from({length: plates.length}, (_, i) => i);
+        activateNextPlate();
+    }
+
+    // Aktiviert zufällig eine Platte aus den noch verfügbaren
+    function activateNextPlate() {
+        // Deaktiviere alle Platten
+        plates.forEach(plate => {
+            plate.classList.remove("active");
+            plate.dataset.clicked = "";
+        });
+        if (remainingPlateIndices.length === 0) {
+            showResult();
+            return;
+        }
+        // Zufällige Auswahl aus den verbleibenden Platten
+        const randomIndex = Math.floor(Math.random() * remainingPlateIndices.length);
+        const chosenPlateIndex = remainingPlateIndices[randomIndex];
+        remainingPlateIndices.splice(randomIndex, 1);
+        
+        const delay = Math.random() * 2000 + 2000;
+        setTimeout(() => {
+            const activePlate = plates[chosenPlateIndex];
+            activePlate.classList.add("active");
+            activePlate.dataset.activationTime = Date.now();
+        }, delay);
+    }
+
+    // Klick-Ereignis: Reagiere nur, wenn die angeklickte Platte gerade aktiv ist
+    plates.forEach((plate, index) => {
+        plate.addEventListener("click", function() {
+            if (plate.classList.contains("active") && !plate.dataset.clicked) {
+                const reactionTime = Date.now() - Number(plate.dataset.activationTime);
+                reactionTimes.push(reactionTime);
+                plate.dataset.clicked = "true";
+                plate.classList.remove("active");
+                // Es wird bewusst kein direkter Text auf der Platte angezeigt.
+                activateNextPlate();
+            }
+        });
+    });
+
+    // Zeige das Ergebnis, wenn alle Platten abgeschossen wurden
+    function showResult() {
+        gameArea.classList.add("hidden");
+        resultEl.classList.remove("hidden");
+        const avgTime = Math.round(reactionTimes.reduce((a, b) => a + b, 0) / reactionTimes.length);
+        resultEl.textContent = "Game Over! Your average reaction time: " + avgTime + " ms";
+    }
+
+    startBtn.addEventListener("click", startCountdown);
+});

@@ -375,3 +375,89 @@ footer p {
 /* ============================================================
    =================   MINIGAME-STYLES   ======================
    ============================================================ */
+   #minigameContainer {
+    text-align: center;
+    padding: 100px 20px;
+}
+
+#minigameContainer h1 {
+    font-size: 48px;
+    margin-bottom: 10px;
+}
+
+#minigameContainer p {
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+/* Start-Button styling */
+#startMinigame {
+    font-size: 24px;
+    padding: 15px 30px;
+    background: rgba(255, 255, 255, 0.8);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-bottom: 20px;
+}
+
+/* Verstecken von Elementen */
+.hidden {
+    display: none;
+}
+
+#countdown {
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+/* Spielbereich */
+#gameArea {
+    margin-bottom: 20px;
+}
+
+/* Standardmäßig: Platten voll opak */
+.game-plate {
+    width: 150px;
+    height: 150px;
+    background-color: #ddd;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    position: relative;
+    opacity: 1;
+    transition: opacity 0.5s ease;
+}
+
+/* Während des Countdowns: Platten werden leicht transparent */
+.countdown-mode .game-plate {
+    opacity: 0.5;
+}
+
+/* Der Punkt in der Mitte: grau (wird bei Aktivierung gelb) */
+.plate-dot {
+    width: 30px;
+    height: 30px;
+    background-color: grey;
+    border-radius: 50%;
+}
+
+/* Bei aktiver Platte wird der Dot gelb */
+.game-plate.active .plate-dot {
+    background-color: yellow;
+}
+
+#result {
+    font-size: 24px;
+    margin-top: 20px;
+}
+
+/* Reihenanordnung */
+.game-row {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 20px;
+}

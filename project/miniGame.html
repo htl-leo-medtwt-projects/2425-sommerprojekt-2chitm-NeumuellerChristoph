@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zeilerberg Camping</title>
+    <title>Zeilerberg Camping - Mini Game</title>
     <link rel="stylesheet" href="style.css">
     <script src="script.js" defer></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -11,7 +11,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Rye&display=swap" rel="stylesheet">
   </head>
   <body>
-    <!-- Navigation -->
+    <!-- Navigation (wie auf den anderen Seiten) -->
     <div id="navBarBackground">
       <div class="navBarContainer">
         <img id="navBarLogo" src="imgaes/logo/roundLogoTipi.png" alt="ZeilerBerg Camping Logo">
@@ -22,10 +22,36 @@
       </div>
     </div>
 
-    <!-- Platzhalter für den Inhalt der MiniGame-Seite -->
-    <section class="minigame-content" style="padding: 100px 20px; text-align: center;">
-      <h1>Mini Game</h1>
-      <p>Hier wird das Mini Game später eingebunden.</p>
+    <!-- MiniGame Container -->
+    <section id="minigameContainer">
+      <h1>Revolver Challenge</h1>
+      <p>Shoot the plate when it turns yellow</p>
+      <button id="startMinigame">Start MiniGame</button>
+      <div id="countdown" class="hidden"></div>
+      <div id="gameArea" class="hidden">
+        <!-- Obere Zeile: 3 Platten -->
+        <div class="game-row top-row">
+          <div class="game-plate" data-plate-index="0">
+            <div class="plate-dot"></div>
+          </div>
+          <div class="game-plate" data-plate-index="1">
+            <div class="plate-dot"></div>
+          </div>
+          <div class="game-plate" data-plate-index="2">
+            <div class="plate-dot"></div>
+          </div>
+        </div>
+        <!-- Untere Zeile: 2 Platten -->
+        <div class="game-row bottom-row">
+          <div class="game-plate" data-plate-index="3">
+            <div class="plate-dot"></div>
+          </div>
+          <div class="game-plate" data-plate-index="4">
+            <div class="plate-dot"></div>
+          </div>
+        </div>
+      </div>
+      <div id="result" class="hidden"></div>
     </section>
   </body>
 </html>
