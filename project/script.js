@@ -1,3 +1,8 @@
+// Audio-Elemente
+const shotSound   = document.createElement("audio");
+const reloadSound = document.createElement("audio");
+document.body.append(shotSound, reloadSound);
+
 // -----------------------
 // Navbar-Verkleinerung und Booking Panel (bestehender Code)
 // -----------------------
