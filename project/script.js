@@ -238,15 +238,26 @@ document.addEventListener("DOMContentLoaded", function () {
     const revolverSelector = document.getElementById("revolverSelector");
     const revolverOptions  = document.querySelectorAll(".revolver-option");
     revolverOptions.forEach(opt => {
-      opt.addEventListener("click", () => {
-        // Auswahl hervorheben
-        revolverOptions.forEach(o => o.classList.remove("selected"));
-        opt.classList.add("selected");
-        selectedRevolver = opt.dataset.id;
-        shotSound.src    = `imgaes/WEAPONS/sounds/${selectedRevolver}.mp3`;
-        shotSound.volume = 0.6; 
+        opt.addEventListener("click", () => {
+          // Auswahl hervorheben
+          revolverOptions.forEach(o => o.classList.remove("selected"));
+          opt.classList.add("selected");
+          
+          // Gewählten Revolver merken
+          selectedRevolver = opt.dataset.id;
+      
+          // Schuss-Sound setzen
+          shotSound.src    = `audio/${selectedRevolver}.mp3`;
+          shotSound.volume = 0.6;
+      
+          // Nachlade-Sound abspielen
+          reloadSound.src    = `audio/reload.mp3`;
+          reloadSound.volume = 1.0;
+          reloadSound.currentTime = 0;
+          reloadSound.play();
+        });
       });
-    });
+      
   
     // --- 3) MiniGame-Container prüfen ---
     const minigameContainer = document.getElementById("minigameContainer");
