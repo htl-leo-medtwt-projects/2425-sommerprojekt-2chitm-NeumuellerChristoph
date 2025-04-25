@@ -12,52 +12,68 @@ window.addEventListener("scroll", function() {
     }
 });
 
+//-----------------//
+//  Booking Panel  //
+//-----------------//
 document.addEventListener("DOMContentLoaded", function () {
-    // Booking Panel
-    const mapImage = document.getElementById("campingMap");
-    const bookingPanel = document.getElementById("bookingPanel");
-    const addBookingButton = document.getElementById("addBooking");
-    const bookingMessage = document.getElementById("bookingMessage");
-    const bookingList = document.getElementById("bookingList");
-
-    // Panel ein-/ausblenden
-    mapImage.addEventListener("click", function() {
-      bookingPanel.classList.toggle("active");
-    });
-
-    // Bestehende Buchungen laden
+    // DOM-Elemente
+    const mapImage          = document.getElementById("campingMap");
+    const bookingPanel      = document.getElementById("bookingPanel");
+    const addBookingButton  = document.getElementById("addBooking");
+    const bookingMessage    = document.getElementById("bookingMessage");
+    const bookingTableBody  = document.querySelector("#bookingTable tbody");
+    const startDateInput    = document.getElementById("startDate");
+    const endDateInput      = document.getElementById("endDate");
+    const purchaseInput     = document.getElementById("purchase");
+  
+    // bookings aus LocalStorage oder leeres Array
     let bookings = JSON.parse(localStorage.getItem("bookings")) || [];
+  
+    // Tabelle füllen
     function displayBookings() {
-      bookingList.innerHTML = "";
-      bookings.forEach(booking => {
-        let li = document.createElement("li");
-        li.textContent = `${booking.date} - ${booking.description}`;
-        bookingList.appendChild(li);
+      bookingTableBody.innerHTML = "";
+      bookings.forEach(b => {
+        const tr = document.createElement("tr");
+        tr.innerHTML = `
+          <td>${b.startDate}</td>
+          <td>${b.endDate}</td>
+          <td>${b.purchase}</td>
+        `;
+        bookingTableBody.appendChild(tr);
       });
     }
     displayBookings();
-
-    // Neue Buchung hinzufügen, wenn Datum frei ist
-    addBookingButton.addEventListener("click", function(){ 
-      const dateInput = document.getElementById("bookingDate").value;
-      const descriptionInput = document.getElementById("bookingDescription").value.trim();
-
-      if (!dateInput || !descriptionInput) {
-        bookingMessage.textContent = "Bitte Datum und Beschreibung eingeben.";
+  
+    // Panel ein-/ausblenden
+    mapImage.addEventListener("click", () => {
+      bookingPanel.classList.toggle("active");
+    });
+  
+    // Neue Buchung speichern
+    addBookingButton.addEventListener("click", () => {
+      const start    = startDateInput.value;
+      const end      = endDateInput.value;
+      const purchase = purchaseInput.value.trim();
+  
+      // Validierung
+      if (!start || !end || !purchase) {
+        bookingMessage.textContent = "Bitte alle Felder ausfüllen.";
         return;
       }
-      if (bookings.some(booking => booking.date === dateInput)) {
-        bookingMessage.textContent = "Dieser Termin ist bereits belegt.";
-        return;
-      }
-      const newBooking = { date: dateInput, description: descriptionInput };
-      bookings.push(newBooking);
+  
+      // Speichern
+      bookings.push({ startDate: start, endDate: end, purchase });
       localStorage.setItem("bookings", JSON.stringify(bookings));
-      bookingMessage.textContent = "Buchung erfolgreich!";
+      bookingMessage.textContent = "Buchung gespeichert!";
+  
+      // Formular zurücksetzen und Tabelle neu laden
+      startDateInput.value  = "";
+      endDateInput.value    = "";
+      purchaseInput.value   = "";
       displayBookings();
     });
-});
-
+  });
+  
 // -----------------------
 // Back-to-Top-Button
 // -----------------------
