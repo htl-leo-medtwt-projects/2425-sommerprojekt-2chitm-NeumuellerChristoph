@@ -153,6 +153,7 @@ body {
     text-align: center;
     margin: 40px 0;
 }
+
 .buchen-title h1 {
     font-size: 60px;
     font-weight: normal;
@@ -164,6 +165,7 @@ body {
     justify-content: center;
     margin: 40px 0;
 }
+
 .buchen-map-section img {
     margin-top: 9vh;
     max-width: 75%;
@@ -179,10 +181,12 @@ body {
     width: 800px;
     transform-origin: center center;
 }
+
 .ornament-left img {
     left: 980px;
     transform: rotate(-90deg) scaleX(-1);
 }
+
 .ornament-right img {
     left: -260px;
     transform: rotate(90deg) scaleX(-1);
@@ -200,17 +204,20 @@ body {
     width: 600px;
     max-width: 90vw;
     height: 100%;
-    max-height: 100vh;     /* hier ergänzt */
+    max-height: 100vh;
+    /* hier ergänzt */
     background-color: #ffffff;
     border-radius: 8px 0 0 8px;
     box-shadow: 2px 0 8px rgba(0, 0, 0, 0.2);
     padding: 20px;
-    overflow-y: auto;      /* hier ergänzt */
+    overflow-y: auto;
+    /* hier ergänzt */
     transition: left 0.5s ease;
     z-index: 2000;
 }
+
 #bookingPanel.active {
-    left: 0;                    
+    left: 0;
 }
 
 /* Header im Panel */
@@ -218,6 +225,7 @@ body {
     text-align: center;
     margin-bottom: 20px;
 }
+
 #bookingHeader .roundImage {
     width: 120px;
     height: 120px;
@@ -229,18 +237,20 @@ body {
 #bookingCalendar {
     margin-bottom: 20px;
 }
+
 #bookingCalendar h3 {
     font-size: 24px;
     margin-bottom: 10px;
     color: #333;
 }
+
 #fc-calendar {
     width: 100%;
     min-height: 400px;
     background: #fafafa;
     border: 1px solid #ddd;
     border-radius: 4px;
-    box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
     margin-bottom: 20px;
 }
 
@@ -251,15 +261,18 @@ body {
 .booking-form {
     padding: 0 10px;
 }
+
 .booking-row {
     margin-bottom: 15px;
 }
+
 .booking-row label {
     display: block;
     margin-bottom: 5px;
     font-weight: bold;
     color: #444;
 }
+
 .booking-row input {
     width: 100%;
     padding: 10px;
@@ -281,6 +294,7 @@ body {
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
+
 #addBooking:hover {
     background-color: #0056b3;
 }
@@ -372,7 +386,8 @@ footer {
     width: 30px;
     height: 30px;
 }
-.footer-ornament img{
+
+.footer-ornament img {
     width: 90vw;
     margin-left: 5vw;
 }
@@ -466,6 +481,45 @@ footer p {
     margin-bottom: 20px;
 }
 
+/* Restart-Button nach Game Over */
+#restartBtn {
+    display: inline-block;
+    margin: 20px auto 0;
+    padding: 12px 28px;
+    background-color: #28a745;
+    color: #ffffff;
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+#restartBtn:hover {
+    background-color: #218838;
+    transform: translateY(-2px);
+}
+
+#restartBtn:active {
+    background-color: #1e7e34;
+    transform: translateY(0);
+}
+
+/* Einschussloch auf der Platte */
+.bullet-hole {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    pointer-events: none;
+    /* Klicks passieren durch das Bild hindurch */
+    transform: translate(-50%, -50%);
+    /* zentriert auf Klickpunkt */
+}
+
+
 /* ============================================================
    ==============  REVOLVER SELECTOR STYLES  ==================
    ============================================================ */
@@ -473,38 +527,49 @@ footer p {
     position: absolute;
     bottom: 20px;
     right: 20px;
-    width: 180px;            /* Breite des Menüs */
-    max-height: 60vh;        /* Maximal 60% der Viewport-Höhe */
-    overflow-y: auto;        /* Vertikales Scrollen */
-    background: rgba(255,255,255,0.9);
+    width: 180px;
+    /* Breite des Menüs */
+    max-height: 60vh;
+    /* Maximal 60% der Viewport-Höhe */
+    overflow-y: auto;
+    /* Vertikales Scrollen */
+    background: rgba(255, 255, 255, 0.9);
     padding: 12px;
     border-radius: 8px;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
     z-index: 2500;
 }
+
 #revolverSelector h3 {
     margin: 0 0 8px;
     font-size: 16px;
     color: #333;
 }
+
 .revolver-options {
     display: flex;
-    flex-direction: column;  /* untereinander */
+    flex-direction: column;
+    /* untereinander */
     align-items: center;
     gap: 12px;
 }
+
 .revolver-option {
-    width: 100%;             /* passt sich der Menü-Breite an */
-    max-width: 150px;        /* oder fixe Breite, z.B. 120px */
+    width: 100%;
+    /* passt sich der Menü-Breite an */
+    max-width: 150px;
+    /* oder fixe Breite, z.B. 120px */
     object-fit: contain;
     cursor: pointer;
     border: 2px solid transparent;
     border-radius: 4px;
     transition: border-color 0.2s ease, transform 0.2s ease;
 }
+
 .revolver-option:hover {
     transform: translateY(-2px);
 }
+
 .revolver-option.selected {
     border-color: #007BFF;
 }

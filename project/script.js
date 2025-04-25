@@ -220,143 +220,154 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 //   **************************************************************
-//   MiniGame-Funktionalität (nur auf der MiniGame-Seite ausführen)
-//   **************************************************************
+//   MiniGame-Funktionalität inkl. Sound
+//   **************************************************************  
 
-// MiniGame-Funktionalität (nur auf der MiniGame-Seite ausführen)
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
+    // --- 1) Audio-Element für Schuss-Sound ---
+    const shotSound = document.createElement("audio");
+    document.body.appendChild(shotSound);
+  
+    // --- 2) Revolver-Selector ---
+    let selectedRevolver = null;
+    const revolverSelector = document.getElementById("revolverSelector");
+    const revolverOptions  = document.querySelectorAll(".revolver-option");
+    revolverOptions.forEach(opt => {
+      opt.addEventListener("click", () => {
+        // Auswahl hervorheben
+        revolverOptions.forEach(o => o.classList.remove("selected"));
+        opt.classList.add("selected");
+        selectedRevolver = opt.dataset.id;
+        shotSound.src    = `imgaes/WEAPONS/sounds/${selectedRevolver}.mp3`;
+        shotSound.volume = 0.6; 
+      });
+    });
+  
+    // --- 3) MiniGame-Container prüfen ---
     const minigameContainer = document.getElementById("minigameContainer");
     if (!minigameContainer) return;
-    
-    const startBtn = document.getElementById("startMinigame");
+  
+    // --- 4) Elemente festlegen ---
+    const startBtn    = document.getElementById("startMinigame");
     const countdownEl = document.getElementById("countdown");
-    const gameArea = document.getElementById("gameArea");
-    const resultEl = document.getElementById("result");
-    const plates = document.querySelectorAll(".game-plate");
-    
+    const gameArea    = document.getElementById("gameArea");
+    const resultEl    = document.getElementById("result");
+    const plates      = document.querySelectorAll(".game-plate");
     let reactionTimes = [];
-    let remainingPlateIndices = [];
-
-    // Starte den Countdown (3, 2, 1)
-    function startCountdown() {
-        
-        gameArea.classList.add("countdown-mode");
-        startBtn.classList.add("hidden");
-        countdownEl.classList.remove("hidden");
-        let count = 3;
-        countdownEl.textContent = "GET READY " + count;
-        const countdownInterval = setInterval(() => {
-            count--;
-            if (count > 0) {
-                countdownEl.textContent = "GET READY " + count;
-            } else {
-                clearInterval(countdownInterval);
-                countdownEl.classList.add("hidden");
-                
-                gameArea.classList.remove("countdown-mode");
-                startGame();
-            }
-        }, 1000);
-    }
-
-    // Spielstart: Initialisiere den Array der verfügbaren Platten
-    function startGame() {
-        gameArea.classList.remove("hidden");
-        reactionTimes = [];
-        remainingPlateIndices = Array.from({length: plates.length}, (_, i) => i);
-        activateNextPlate();
-    }
-
-    // Aktiviert zufällig eine Platte aus den noch verfügbaren
-    function activateNextPlate() {
-        plates.forEach(plate => {
-            plate.classList.remove("active");
-            plate.dataset.clicked = "";
-        });
-        if (remainingPlateIndices.length === 0) {
-            showResult();
-            return;
-        }
-        // Zufällige Auswahl aus den verbleibenden Platten
-        const randomIndex = Math.floor(Math.random() * remainingPlateIndices.length);
-        const chosenPlateIndex = remainingPlateIndices[randomIndex];
-        remainingPlateIndices.splice(randomIndex, 1);
-        
-        const delay = Math.random() * 2000 + 2000;
-        setTimeout(() => {
-            const activePlate = plates[chosenPlateIndex];
-            activePlate.classList.add("active");
-            activePlate.dataset.activationTime = Date.now();
-        }, delay);
-    }
-
-
-    // Klick-Ereignis: Reagiere nur, wenn die angeklickte Platte gerade aktiv ist
-    plates.forEach((plate, index) => {
-        plate.addEventListener("click", function() {
-            if (plate.classList.contains("active") && !plate.dataset.clicked) {
-                const reactionTime = Date.now() - Number(plate.dataset.activationTime);
-                reactionTimes.push(reactionTime);
-                plate.dataset.clicked = "true";
-                plate.classList.remove("active");
-                
-                activateNextPlate();
-            }
-        });
-    });
-
-    // Zeige das Ergebnis, wenn alle Platten abgeschossen wurden
-    function showResult() {
-        // Verstecke den Spielbereich
-        gameArea.classList.add("hidden");
-        // Zeige das Ergebnis-Element
-        resultEl.classList.remove("hidden");
-      
-        // Durchschnittszeit berechnen
-        const avgTime = Math.round(
-          reactionTimes.reduce((a, b) => a + b, 0) / reactionTimes.length
-        );
-      
-        // Ergebnis-Text und Neustart-Button rendern
-        resultEl.innerHTML = `
-          <p>Game Over! Deine durchschnittliche Reaktionszeit: <strong>${avgTime} ms</strong></p>
-          <button id="restartBtn">Nochmal spielen</button>
-        `;
-      
-        // Klick auf Neustart-Button lädt die Seite neu
-        document
-          .getElementById("restartBtn")
-          .addEventListener("click", () => location.reload());
+    let remainingPlates = [];
+  
+    // --- 5) Start-Button: Revolver-Menü ausblenden & Countdown ---
+    startBtn.addEventListener("click", () => {
+      if (!selectedRevolver) {
+        alert("Bitte wähle zuerst einen Revolver aus!");
+        return;
       }
+      // Revolver-Auswahl verbergen
+      revolverSelector.style.display = "none";
+  
+      // Countdown starten
+      startBtn.classList.add("hidden");
+      countdownEl.classList.remove("hidden");
+      gameArea.classList.add("countdown-mode");
+  
+      let count = 3;
+      countdownEl.textContent = "GET READY " + count;
+      const interval = setInterval(() => {
+        count--;
+        if (count > 0) {
+          countdownEl.textContent = "GET READY " + count;
+        } else {
+          clearInterval(interval);
+          countdownEl.classList.add("hidden");
+          gameArea.classList.remove("countdown-mode");
+          startGame();
+        }
+      }, 1000);
+    });
+  
+    // --- 6) Spielstart: Platten-Array initialisieren ---
+    function startGame() {
+      gameArea.classList.remove("hidden");
+      reactionTimes = [];
+      remainingPlates = Array.from({ length: plates.length }, (_, i) => i);
+      activateNextPlate();
+    }
+  
+    // --- 7) Nächste Platte aktivieren (zufällig) ---
+    function activateNextPlate() {
+      // Reset aller Platten
+      plates.forEach(p => {
+        p.classList.remove("active");
+        delete p.dataset.clicked;
+      });
+      // Alle durch – Ergebnis anzeigen
+      if (remainingPlates.length === 0) {
+        showResult();
+        return;
+      }
+      // Zufällig eine Platte auswählen
+      const rnd    = Math.floor(Math.random() * remainingPlates.length);
+      const idx    = remainingPlates.splice(rnd, 1)[0];
+      const delay  = Math.random() * 2000 + 2000; // 2–4 Sek.
+  
+      setTimeout(() => {
+        const plate = plates[idx];
+        plate.classList.add("active");
+        plate.dataset.activationTime = Date.now();
+      }, delay);
+    }
+  
+    // --- 8) Klick-Handler: Sound & Timing ---
+    plates.forEach(plate => {
+        plate.addEventListener("click", function (e) {
+          if (plate.classList.contains("active") && !plate.dataset.clicked) {
+            // 1) Einschussloch erzeugen
+            const hole = document.createElement("img");
+            hole.src = "imgaes/WEAPONS/bulletHole.png";
+            hole.className = "bullet-hole";
+            // Position relativ zur Platte
+            const rect = plate.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            hole.style.left = `${x}px`;
+            hole.style.top  = `${y}px`;
+            plate.appendChild(hole);
       
-
-    startBtn.addEventListener("click", startCountdown);
-});
-
-// Revolver-Auswahl
-let selectedRevolver = null;
-const revolverOptions = document.querySelectorAll('.revolver-option');
-revolverOptions.forEach(opt => {
-  opt.addEventListener('click', () => {
-    // Markierung umschalten
-    revolverOptions.forEach(o => o.classList.remove('selected'));
-    opt.classList.add('selected');
-    // Gewählten Revolver merken
-    selectedRevolver = opt.dataset.id;
-    console.log('Gewählter Revolver:', selectedRevolver);
+            // 2) Schuss-Sound abspielen
+            if (shotSound.src) {
+              shotSound.currentTime = 0;
+              shotSound.play();
+            }
+      
+            // 3) Reaktionszeit messen
+            const rt = Date.now() - Number(plate.dataset.activationTime);
+            reactionTimes.push(rt);
+      
+            plate.dataset.clicked = "true";
+            plate.classList.remove("active");
+      
+            activateNextPlate();
+          }
+        });
+      });
+      
+  
+    // --- 9) Ergebnis anzeigen & Restart-Button ---
+    function showResult() {
+      gameArea.classList.add("hidden");
+      resultEl.classList.remove("hidden");
+  
+      const avg = Math.round(
+        reactionTimes.reduce((sum, t) => sum + t, 0) / reactionTimes.length
+      );
+  
+      resultEl.innerHTML = `
+        <p>Game Over! Deine durchschnittliche Reaktionszeit: <strong>${avg} ms</strong></p>
+        <button id="restartBtn">Nochmal spielen</button>
+      `;
+      document
+        .getElementById("restartBtn")
+        .addEventListener("click", () => location.reload());
+    }
   });
-});
-
-// nach dem Revolver-Selector-Setup
-const revolverSelector = document.getElementById('revolverSelector');
-const startBtn = document.getElementById("startMinigame");
-
-// bestehender Click-Handler ersetzen/ergänzen:
-startBtn.addEventListener("click", function() {
-  // 1) Revolver-Auswahl ausblenden
-  revolverSelector.style.display = "none";
-
-  // 2) Deinen bestehenden Countdown-/Spielstart-Code aufrufen
-  startCountdown(); // oder wie dein bestehender Start-Funktion heißt
-});
-
+  
