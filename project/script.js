@@ -11,26 +11,27 @@ window.addEventListener("scroll", function() {
         navBar.classList.remove("shrink");
     }
 });
-
 //-----------------//
 //  Booking Panel  //
+//  + FullCalendar //
 //-----------------//
 document.addEventListener("DOMContentLoaded", function () {
     // DOM-Elemente
-    const mapImage          = document.getElementById("campingMap");
-    const bookingPanel      = document.getElementById("bookingPanel");
-    const addBookingButton  = document.getElementById("addBooking");
-    const bookingMessage    = document.getElementById("bookingMessage");
-    const bookingTableBody  = document.querySelector("#bookingTable tbody");
-    const startDateInput    = document.getElementById("startDate");
-    const endDateInput      = document.getElementById("endDate");
-    const purchaseInput     = document.getElementById("purchase");
+    const mapImage         = document.getElementById("campingMap");
+    const bookingPanel     = document.getElementById("bookingPanel");
+    const addBookingButton = document.getElementById("addBooking");
+    const bookingMessage   = document.getElementById("bookingMessage");
+    const bookingTableBody = document.querySelector("#bookingTable tbody");
+    const startDateInput   = document.getElementById("startDate");
+    const endDateInput     = document.getElementById("endDate");
+    const purchaseInput    = document.getElementById("purchase");
   
     // bookings aus LocalStorage oder leeres Array
     let bookings = JSON.parse(localStorage.getItem("bookings")) || [];
   
-    // Tabelle füllen
+    // 1) Tabellen- und Kalender-Update Funktion
     function displayBookings() {
+      // Tabelle füllen
       bookingTableBody.innerHTML = "";
       bookings.forEach(b => {
         const tr = document.createElement("tr");
@@ -41,15 +42,29 @@ document.addEventListener("DOMContentLoaded", function () {
         `;
         bookingTableBody.appendChild(tr);
       });
-    }
-    displayBookings();
   
-    // Panel ein-/ausblenden
+      // Kalender-Events neu setzen
+      if (window.calendar) {
+        const events = bookings.map(b => ({
+          title: b.purchase,
+          start: b.startDate,
+          end:   new Date(new Date(b.endDate).getTime()+86400000)
+                  .toISOString().split('T')[0],
+          allDay: true,
+          backgroundColor: '#007BFF',
+          borderColor: '#0056b3'
+        }));
+        window.calendar.removeAllEvents();
+        window.calendar.addEventSource(events);
+      }
+    }
+  
+    // 2) Panel ein-/ausblenden
     mapImage.addEventListener("click", () => {
       bookingPanel.classList.toggle("active");
     });
   
-    // Neue Buchung speichern
+    // 3) Neue Buchung anlegen
     addBookingButton.addEventListener("click", () => {
       const start    = startDateInput.value;
       const end      = endDateInput.value;
@@ -61,17 +76,50 @@ document.addEventListener("DOMContentLoaded", function () {
         return;
       }
   
-      // Speichern
+      // Buchung speichern
       bookings.push({ startDate: start, endDate: end, purchase });
       localStorage.setItem("bookings", JSON.stringify(bookings));
       bookingMessage.textContent = "Buchung gespeichert!";
   
-      // Formular zurücksetzen und Tabelle neu laden
-      startDateInput.value  = "";
-      endDateInput.value    = "";
-      purchaseInput.value   = "";
+      // Formular zurücksetzen und Anzeige updaten
+      startDateInput.value = "";
+      endDateInput.value   = "";
+      purchaseInput.value  = "";
       displayBookings();
     });
+  
+    // 4) FullCalendar initialisieren
+    const calendarEl = document.getElementById("fc-calendar");
+    if (calendarEl && typeof FullCalendar !== "undefined") {
+      window.calendar = new FullCalendar.Calendar(calendarEl, {
+        initialView: 'dayGridMonth',
+        locale: 'de',
+        headerToolbar: {
+          left: 'prev,next today',
+          center: 'title',
+          right: ''
+        },
+        events: bookings.map(b => ({
+          title: b.purchase,
+          start: b.startDate,
+          end:   new Date(new Date(b.endDate).getTime()+86400000)
+                  .toISOString().split('T')[0],
+          allDay: true,
+          backgroundColor: '#007BFF',
+          borderColor: '#0056b3'
+        })),
+        dateClick: info => {
+          // Formular vorbefüllen bei Klick
+          startDateInput.value = info.dateStr;
+          endDateInput.value   = info.dateStr;
+          bookingMessage.textContent = "";
+        }
+      });
+      window.calendar.render();
+    }
+  
+    // Initiale Anzeige
+    displayBookings();
   });
   
 // -----------------------
