@@ -1,62 +1,89 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zeilerberg Camping</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="script.js" defer></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Rye&display=swap" rel="stylesheet">
-  </head>
-  <body>
-    <!-- Navigation -->
-    <div id="navBarBackground">
-      <div class="navBarContainer">
-        <img id="navBarLogo" src="imgaes/logo/roundLogoTipi.png" alt="ZeilerBerg Camping Logo">
-        <a href="buchen.html">BUCHEN</a>
-        <a href="miniGame.html">MINIGAME</a>
-        <a href="erleben.html">ERLEBEN</a>
-        <a href="kulinarik.html">KULINARIK</a>
-      </div>
-    </div>
 
-    <!-- Buchen-Titel -->
-    <section class="buchen-title">
-      <h1>BUCHE DIE BESTEN STELLPLÄTZE</h1>
-    </section>
-    
-    <!-- Ornaments -->
-    <div class="ornament-left">
-      <img src="imgaes/schnörkel/schnorkel2.png" alt="Ornament links">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Zeilerberg Camping – Buchen</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Rye&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <!-- Navigation -->
+  <div id="navBarBackground">
+    <div class="navBarContainer">
+      <img id="navBarLogo" src="imgaes/logo/roundLogoTipi.png" alt="ZeilerBerg Camping Logo">
+      <a href="buchen.html">BUCHEN</a>
+      <a href="miniGame.html">MINIGAME</a>
+      <a href="erleben.html">ERLEBEN</a>
+      <a href="kulinarik.html">KULINARIK</a>
     </div>
-    <div class="ornament-right">
-      <img src="imgaes/schnörkel/schnorkel2.png" alt="Ornament rechts">
+  </div>
+
+  <!-- Titel -->
+  <section class="buchen-title">
+    <h1>BUCHE DIE BESTEN STELLPLÄTZE</h1>
+  </section>
+
+  <!-- Ornaments -->
+  <div class="ornament-left">
+    <img src="imgaes/schnörkel/schnorkel2.png" alt="Ornament links">
+  </div>
+  <div class="ornament-right">
+    <img src="imgaes/schnörkel/schnorkel2.png" alt="Ornament rechts">
+  </div>
+
+  <!-- Karte als Auslöser -->
+  <section class="buchen-map-section">
+    <img id="campingMap" src="imgaes/map/Map.png" alt="Karte vom Campingplatz">
+  </section>
+
+  <!-- Booking Panel (slide-in von links) -->
+  <div id="bookingPanel">
+    <div id="bookingHeader">
+      <img src="imgaes/logo/roundLogoTipi.png" alt="Booking Image" class="roundImage">
+      <h2>Stellplatz A</h2>
     </div>
-    
-    <!-- Bild als Auslöser für das Booking Panel -->
-    <section class="buchen-map-section">
-      <img id="campingMap" src="imgaes/map/Campig Grid.webp" alt="Karte vom Campingplatz">
-    </section>
-    
-    <!-- Booking Panel, das von links hereinschiebt -->
-    <div id="bookingPanel">
-      <div id="bookingHeader">
-        <img src="imgaes/logo/roundLogoTipi.png" alt="Booking Image" class="roundImage">
-        <h2>Stellplatz A</h2>
-      </div>
-      <div id="bookingCalendar">
-        <h3>Kalender</h3>
-        <ul id="bookingList"></ul>
-        <!-- Labels für die Input-Felder -->
-        <label for="bookingDate">Datum:</label>
-        <input type="date" id="bookingDate">
-        <label for="bookingDescription">Beschreibung:</label>
-        <input type="text" id="bookingDescription" placeholder="Buchungsbeschreibung">
+    <div id="bookingCalendar">
+      <h3>Kalender</h3>
+
+      <!-- Bestehende Buchungen -->
+      <table id="bookingTable">
+        <thead>
+          <tr>
+            <th>Anreise</th>
+            <th>Abreise</th>
+            <th>Gekauftes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Wird per JavaScript befüllt -->
+        </tbody>
+      </table>
+
+      <!-- Buchungsformular -->
+      <div class="booking-form">
+        <div class="booking-row">
+          <label for="startDate">Anreise:</label>
+          <input type="date" id="startDate">
+        </div>
+        <div class="booking-row">
+          <label for="endDate">Abreise:</label>
+          <input type="date" id="endDate">
+        </div>
+        <div class="booking-row">
+          <label for="purchase">Gekauftes:</label>
+          <input type="text" id="purchase" placeholder="Was hast du gekauft?">
+        </div>
         <button id="addBooking">Buchen</button>
         <p id="bookingMessage"></p>
       </div>
     </div>
-  </body>
+  </div>
+</body>
+
 </html>

@@ -162,8 +162,8 @@ document.addEventListener("DOMContentLoaded", function() {
 // MiniGame-Funktionalität (nur auf der MiniGame-Seite ausführen)
 document.addEventListener("DOMContentLoaded", function() {
     const minigameContainer = document.getElementById("minigameContainer");
-    if (!minigameContainer) return; 
-
+    if (!minigameContainer) return;
+    
     const startBtn = document.getElementById("startMinigame");
     const countdownEl = document.getElementById("countdown");
     const gameArea = document.getElementById("gameArea");
@@ -205,7 +205,6 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // Aktiviert zufällig eine Platte aus den noch verfügbaren
     function activateNextPlate() {
-        
         plates.forEach(plate => {
             plate.classList.remove("active");
             plate.dataset.clicked = "";
@@ -226,6 +225,7 @@ document.addEventListener("DOMContentLoaded", function() {
             activePlate.dataset.activationTime = Date.now();
         }, delay);
     }
+
 
     // Klick-Ereignis: Reagiere nur, wenn die angeklickte Platte gerade aktiv ist
     plates.forEach((plate, index) => {
