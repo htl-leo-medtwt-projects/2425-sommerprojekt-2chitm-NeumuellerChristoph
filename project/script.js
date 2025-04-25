@@ -307,11 +307,56 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // Zeige das Ergebnis, wenn alle Platten abgeschossen wurden
     function showResult() {
+        // Verstecke den Spielbereich
         gameArea.classList.add("hidden");
+        // Zeige das Ergebnis-Element
         resultEl.classList.remove("hidden");
-        const avgTime = Math.round(reactionTimes.reduce((a, b) => a + b, 0) / reactionTimes.length);
-        resultEl.textContent = "Game Over! Your average reaction time: " + avgTime + " ms";
-    }
+      
+        // Durchschnittszeit berechnen
+        const avgTime = Math.round(
+          reactionTimes.reduce((a, b) => a + b, 0) / reactionTimes.length
+        );
+      
+        // Ergebnis-Text und Neustart-Button rendern
+        resultEl.innerHTML = `
+          <p>Game Over! Deine durchschnittliche Reaktionszeit: <strong>${avgTime} ms</strong></p>
+          <button id="restartBtn">Nochmal spielen</button>
+        `;
+      
+        // Klick auf Neustart-Button lädt die Seite neu
+        document
+          .getElementById("restartBtn")
+          .addEventListener("click", () => location.reload());
+      }
+      
 
     startBtn.addEventListener("click", startCountdown);
 });
+
+// Revolver-Auswahl
+let selectedRevolver = null;
+const revolverOptions = document.querySelectorAll('.revolver-option');
+revolverOptions.forEach(opt => {
+  opt.addEventListener('click', () => {
+    // Markierung umschalten
+    revolverOptions.forEach(o => o.classList.remove('selected'));
+    opt.classList.add('selected');
+    // Gewählten Revolver merken
+    selectedRevolver = opt.dataset.id;
+    console.log('Gewählter Revolver:', selectedRevolver);
+  });
+});
+
+// nach dem Revolver-Selector-Setup
+const revolverSelector = document.getElementById('revolverSelector');
+const startBtn = document.getElementById("startMinigame");
+
+// bestehender Click-Handler ersetzen/ergänzen:
+startBtn.addEventListener("click", function() {
+  // 1) Revolver-Auswahl ausblenden
+  revolverSelector.style.display = "none";
+
+  // 2) Deinen bestehenden Countdown-/Spielstart-Code aufrufen
+  startCountdown(); // oder wie dein bestehender Start-Funktion heißt
+});
+

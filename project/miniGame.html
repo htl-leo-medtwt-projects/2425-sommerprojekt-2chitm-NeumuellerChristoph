@@ -1,57 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zeilerberg Camping - Mini Game</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="script.js" defer></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Rye&display=swap" rel="stylesheet">
-  </head>
-  <body>
-    <!-- Navigation (wie auf den anderen Seiten) -->
-    <div id="navBarBackground">
-      <div class="navBarContainer">
-        <img id="navBarLogo" src="imgaes/logo/roundLogoTipi.png" alt="ZeilerBerg Camping Logo">
-        <a href="buchen.html">BUCHEN</a>
-        <a href="miniGame.html">MINIGAME</a>
-        <a href="erleben.html">ERLEBEN</a>
-        <a href="kulinarik.html">KULINARIK</a>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Zeilerberg Camping - Mini Game</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Rye&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <!-- Navigation (wie auf den anderen Seiten) -->
+  <div id="navBarBackground">
+    <div class="navBarContainer">
+      <img id="navBarLogo" src="imgaes/logo/roundLogoTipi.png" alt="ZeilerBerg Camping Logo">
+      <a href="buchen.html">BUCHEN</a>
+      <a href="miniGame.html">MINIGAME</a>
+      <a href="erleben.html">ERLEBEN</a>
+      <a href="kulinarik.html">KULINARIK</a>
+    </div>
+  </div>
+
+  <!-- MiniGame Container -->
+  <section id="minigameContainer">
+    <h1>Revolver Challenge</h1>
+    <p>Shoot the plate when it turns yellow</p>
+
+    <!-- Revolver-Selector -->
+    <div id="revolverSelector">
+      <h3>Wähle deinen Revolver:</h3>
+      <div class="revolver-options">
+        <img src="imgaes/WEAPONS/rugerSingleSix(tot).jpeg" data-id="RugerSingleSix" alt="Revolver 1" class="revolver-option">
+        <img src="imgaes/WEAPONS/coltNavy1851.jpg" data-id="ColtNavy" alt="Revolver 2" class="revolver-option">
+        <img src="imgaes/WEAPONS/schoffieldModel3.jpeg" data-id="schoffieldModel3" alt="Revolver 3" class="revolver-option">
+        <img src="imgaes/WEAPONS/coltSinlgeActionArmy45.jpg" data-id="ColtSingleActionArmy" alt="Revolver 4" class="revolver-option">
+        <img src="imgaes/WEAPONS/lematRevolver.jpg" data-id="LematRevolver" alt="Revolver 5" class="revolver-option">
       </div>
     </div>
 
-    <!-- MiniGame Container -->
-    <section id="minigameContainer">
-      <h1>Revolver Challenge</h1>
-      <p>Shoot the plate when it turns yellow</p>
-      <button id="startMinigame">Start MiniGame</button>
-      <div id="countdown" class="hidden"></div>
-      <div id="gameArea" class="hidden">
-        <!-- Obere Zeile: 3 Platten -->
-        <div class="game-row top-row">
-          <div class="game-plate" data-plate-index="0">
-            <div class="plate-dot"></div>
-          </div>
-          <div class="game-plate" data-plate-index="1">
-            <div class="plate-dot"></div>
-          </div>
-          <div class="game-plate" data-plate-index="2">
-            <div class="plate-dot"></div>
-          </div>
+    <!-- Start-Button -->
+    <button id="startMinigame">Start MiniGame</button>
+
+    <div id="countdown" class="hidden"></div>
+    <div id="gameArea" class="hidden">
+      <!-- Obere Zeile: 3 Platten -->
+      <div class="game-row top-row">
+        <div class="game-plate" data-plate-index="0">
+          <div class="plate-dot"></div>
         </div>
-        <!-- Untere Zeile: 2 Platten -->
-        <div class="game-row bottom-row">
-          <div class="game-plate" data-plate-index="3">
-            <div class="plate-dot"></div>
-          </div>
-          <div class="game-plate" data-plate-index="4">
-            <div class="plate-dot"></div>
-          </div>
+        <div class="game-plate" data-plate-index="1">
+          <div class="plate-dot"></div>
+        </div>
+        <div class="game-plate" data-plate-index="2">
+          <div class="plate-dot"></div>
         </div>
       </div>
-      <div id="result" class="hidden"></div>
-    </section>
-  </body>
+      <!-- Untere Zeile: 2 Platten -->
+      <div class="game-row bottom-row">
+        <div class="game-plate" data-plate-index="3">
+          <div class="plate-dot"></div>
+        </div>
+        <div class="game-plate" data-plate-index="4">
+          <div class="plate-dot"></div>
+        </div>
+      </div>
+    </div>
+    <div id="result" class="hidden"></div>
+  </section>
+</body>
+
 </html>
