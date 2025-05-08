@@ -1,58 +1,58 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zeilerberg Camping</title>
+    <title>Zeilerberg Camping – Kulinarik</title>
     <link rel="stylesheet" href="style.css">
-    <script src="script.js" defer></script>
+
+    <!-- Dein Kulinarik-Script (enthält now die foods-Datenstruktur) -->
+    <script src="kulinarik.js" defer></script>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Rye&display=swap" rel="stylesheet">
 </head>
-<body class="noScroll">
+
+<body>
+    <!-- Navigation -->
     <div id="navBarBackground">
         <div class="navBarContainer">
             <img id="navBarLogo" src="imgaes/logo/roundLogoTipi.png" alt="ZeilerBerg Camping Logo">
             <a href="buchen.html">BUCHEN</a>
             <a href="miniGame.html">MINIGAME</a>
             <a href="erleben.html">ERLEBEN</a>
-            <a href="kulinarik.html">KULINARIK</a>
+            <a href="kulinarik.html" class="active">KULINARIK</a>
         </div>
     </div>
 
-  <!-- Titel -->
-  <section class="kulinarik-title">
-    <h1>Kulinarik am Lagerfeuer</h1>
-    <p>Originale Wildwest-Gerichte – suche, filtere & sortiere!</p>
-  </section>
+    <!-- Controls: Suche, Filter, Sort -->
+    <div id="foodControls">
+        <div class="control">
+            <input type="text" id="searchInput" placeholder="Suche Speise…">
+        </div>
+        <div class="control">
+            <select id="categoryFilter" title="Kategorie wählen">
+                <option value="all">Alle Kategorien</option>
+                <option value="Hauptgericht">Hauptgericht</option>
+                <option value="Beilage">Beilage</option>
+                <option value="Snack">Snack</option>
+                <option value="Getränk">Getränk</option>
+            </select>
+        </div>
+        <div class="control">
+            <select id="sortSelect" title="Sortierung wählen">
+                <option value="name-asc">Name A–Z</option>
+                <option value="name-desc">Name Z–A</option>
+                <option value="price-asc">Preis ↑</option>
+                <option value="price-desc">Preis ↓</option>
+            </select>
+        </div>
+    </div>
 
-  <!-- Controls: Suche, Filter, Sort -->
-  <div id="foodControls">
-    <div class="control">
-      <input type="text" id="searchInput" placeholder="Suche Speise…">
-    </div>
-    <div class="control">
-      <select title="ichBraucheEinenTitel1" id="categoryFilter">
-        <option value="all">Alle Kategorien</option>
-        <option value="Hauptgericht">Hauptgericht</option>
-        <option value="Beilage">Beilage</option>
-        <option value="Snack">Snack</option>
-        <option value="Getränk">Getränk</option>
-      </select>
-    </div>
-    <div class="control">
-      <select title="ichBraucheEinenTitel2" id="sortSelect">
-        <option value="name-asc">Name A–Z</option>
-        <option value="name-desc">Name Z–A</option>
-        <option value="price-asc">Preis ↑</option>
-        <option value="price-desc">Preis ↓</option>
-      </select>
-    </div>
-  </div>
-
-  <!-- Grid mit Food-Cards -->
-  <div id="foodList" class="food-grid"></div>
+    <!-- Grid mit Food-Cards -->
+    <div id="foodList" class="food-grid"></div>
 </body>
+
 </html>
