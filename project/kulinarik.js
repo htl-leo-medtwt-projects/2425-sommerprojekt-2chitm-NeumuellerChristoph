@@ -1,6 +1,3 @@
-// kulinarik.js
-
-// 1) Daten direkt im JS (kein fetch nötig)
 const foods = [
     {
       id: 1,
