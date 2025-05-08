@@ -338,6 +338,7 @@ document.addEventListener("DOMContentLoaded", function () {
         plate.addEventListener("click", function (e) {
             if (plate.classList.contains("active") && !plate.dataset.clicked) {
                 // 1) Einschussloch erzeugen
+
                 const hole = document.createElement("img");
                 hole.src = "imgaes/WEAPONS/bulletHole.png";
                 hole.className = "bullet-hole";
@@ -345,6 +346,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 const rect = plate.getBoundingClientRect();
                 const x = e.clientX - rect.left;
                 const y = e.clientY - rect.top;
+            
                 hole.style.left = `${x}px`;
                 hole.style.top = `${y}px`;
                 plate.appendChild(hole);

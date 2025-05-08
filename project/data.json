@@ -1,0 +1,98 @@
+[
+    {
+        "id": 1,
+        "name": "Cowboy Chili",
+        "image": "imgaes/food/cowboy_chili.jpg",
+        "category": "Hauptgericht",
+        "price": 9.50,
+        "description": "Würziger Eintopf mit Rindfleisch, Bohnen & Chili nach Cowboy-Art"
+    },
+    {
+        "id": 2,
+        "name": "Dutch Oven Beef Stew",
+        "image": "imgaes/food/dutch_oven_stew.jpg",
+        "category": "Hauptgericht",
+        "price": 11.00,
+        "description": "Langsam geschmortes Rindfleisch mit Gemüse im gusseisernen Topf"
+    },
+    {
+        "id": 3,
+        "name": "Campfire Beans",
+        "image": "imgaes/food/campfire_beans.jpg",
+        "category": "Beilage",
+        "price": 4.00,
+        "description": "Süß-würzige Bohnen aus der feuerfesten Dose, direkt am Lagerfeuer gegart"
+    },
+    {
+        "id": 4,
+        "name": "Skillet Cornbread",
+        "image": "imgaes/food/skillet_cornbread.jpg",
+        "category": "Beilage",
+        "price": 3.50,
+        "description": "Locker-fluffiges Maisbrot frisch aus der gusseisernen Pfanne"
+    },
+    {
+        "id": 5,
+        "name": "Grilled Venison Steak",
+        "image": "imgaes/food/grilled_venison.jpg",
+        "category": "Hauptgericht",
+        "price": 15.00,
+        "description": "Zartes Wildsteak, perfekt gegrillt über offener Glut"
+    },
+    {
+        "id": 6,
+        "name": "Pan-Fried Trout",
+        "image": "imgaes/food/panfried_trout.jpg",
+        "category": "Hauptgericht",
+        "price": 12.50,
+        "description": "Frisch gefangene Forelle mit Kräuterbutter in der Pfanne gebraten"
+    },
+    {
+        "id": 7,
+        "name": "Smoked Sausage Platter",
+        "image": "imgaes/food/smoked_sausage.jpg",
+        "category": "Snack",
+        "price": 7.00,
+        "description": "Auswahl fein geräucherter Würstchen, serviert mit Senf"
+    },
+    {
+        "id": 8,
+        "name": "Cowboy Coffee",
+        "image": "imgaes/food/cowboy_coffee.jpg",
+        "category": "Getränk",
+        "price": 2.50,
+        "description": "Starker schwarzer Kaffee, aufgebrüht direkt im Topf über dem Feuer"
+    },
+    {
+        "id": 9,
+        "name": "Wild Herb Tea",
+        "image": "imgaes/food/wild_herb_tea.jpg",
+        "category": "Getränk",
+        "price": 2.00,
+        "description": "Aromatischer Tee aus gesammelten Wildkräutern und Blüten"
+    },
+    {
+        "id": 10,
+        "name": "Campfire S'mores",
+        "image": "imgaes/food/campfire_smores.jpg",
+        "category": "Dessert",
+        "price": 3.00,
+        "description": "Gegrillter Marshmallow mit Schokolade zwischen zwei Graham-Crackern"
+    },
+    {
+        "id": 11,
+        "name": "Dutch Oven Apple Cobbler",
+        "image": "imgaes/food/apple_cobbler.jpg",
+        "category": "Dessert",
+        "price": 4.50,
+        "description": "Warmer Apfelauflauf mit knuspriger Teigkruste aus dem Topf"
+    },
+    {
+        "id": 12,
+        "name": "Frybread Tacos",
+        "image": "imgaes/food/frybread_tacos.jpg",
+        "category": "Snack",
+        "price": 5.50,
+        "description": "Knuspriges Frybread gefüllt mit gewürztem Hackfleisch & Gemüse"
+    }
+]
