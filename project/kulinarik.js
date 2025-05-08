@@ -62,8 +62,8 @@ const foods = [
       id: 8,
       name: "Sarsaparilla",
       image: "imgaes/food/sarsaparilla.png",
-      category: "Getränk",
-      price: 1.75,
+      category: "Hauptgericht",
+      price: 7.75,
       description: "Leicht süßer, würziger Wildwurz-Softdrink, beliebt auf Saloons."
     },
     {
