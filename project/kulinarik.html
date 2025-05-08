@@ -22,8 +22,37 @@
         </div>
     </div>
 
-    <img id="kulinarikIMG" src="imgaes/generaLImages/kulinarik.png" alt="fleischSpießÜberFeuer">
+  <!-- Titel -->
+  <section class="kulinarik-title">
+    <h1>Kulinarik am Lagerfeuer</h1>
+    <p>Originale Wildwest-Gerichte – suche, filtere & sortiere!</p>
+  </section>
 
-    
+  <!-- Controls: Suche, Filter, Sort -->
+  <div id="foodControls">
+    <div class="control">
+      <input type="text" id="searchInput" placeholder="Suche Speise…">
+    </div>
+    <div class="control">
+      <select title="ichBraucheEinenTitel1" id="categoryFilter">
+        <option value="all">Alle Kategorien</option>
+        <option value="Hauptgericht">Hauptgericht</option>
+        <option value="Beilage">Beilage</option>
+        <option value="Snack">Snack</option>
+        <option value="Getränk">Getränk</option>
+      </select>
+    </div>
+    <div class="control">
+      <select title="ichBraucheEinenTitel2" id="sortSelect">
+        <option value="name-asc">Name A–Z</option>
+        <option value="name-desc">Name Z–A</option>
+        <option value="price-asc">Preis ↑</option>
+        <option value="price-desc">Preis ↓</option>
+      </select>
+    </div>
+  </div>
+
+  <!-- Grid mit Food-Cards -->
+  <div id="foodList" class="food-grid"></div>
 </body>
 </html>

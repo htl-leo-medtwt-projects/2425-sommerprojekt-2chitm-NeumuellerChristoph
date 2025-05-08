@@ -387,3 +387,73 @@ document.addEventListener("DOMContentLoaded", function () {
             .addEventListener("click", () => location.reload());
     }
 });
+//*************//
+//  Kulinarik  //
+//*************//
+document.addEventListener("DOMContentLoaded", () => {
+    const listEl        = document.getElementById("foodList");
+    const searchInput   = document.getElementById("searchInput");
+    const categorySel   = document.getElementById("categoryFilter");
+    const sortSel       = document.getElementById("sortSelect");
+    let foods = [];
+  
+    // 1) Daten laden
+    fetch("data.json")
+      .then(r => r.json())
+      .then(data => {
+        foods = data;
+        updateView();
+      })
+      .catch(console.error);
+  
+    // 2) Sortieren
+    function sortFoods(arr) {
+      const mode = sortSel.value;
+      return arr.slice().sort((a, b) => {
+        if (mode === "name-asc")  return a.name.localeCompare(b.name);
+        if (mode === "name-desc") return b.name.localeCompare(a.name);
+        if (mode === "price-asc") return a.price - b.price;
+        if (mode === "price-desc")return b.price - a.price;
+        return 0;
+      });
+    }
+  
+    // 3) Filtern & Rendern
+    function updateView() {
+      const q   = searchInput.value.trim().toLowerCase();
+      const cat = categorySel.value;
+      let filtered = foods.filter(f => {
+        const byName = f.name.toLowerCase().includes(q);
+        const byCat  = cat === "all" || f.category === cat;
+        return byName && byCat;
+      });
+      filtered = sortFoods(filtered);
+      render(filtered);
+    }
+  
+    function render(items) {
+      listEl.innerHTML = "";
+      items.forEach(f => {
+        const card = document.createElement("div");
+        card.className = "food-card";
+        card.innerHTML = `
+          <img src="${f.image}" alt="${f.name}">
+          <div class="food-card-content">
+            <h4>${f.name}</h4>
+            <p>${f.description}</p>
+            <div class="food-card-footer">
+              <span class="price">${f.price.toFixed(2)} €</span>
+              <span class="category">${f.category}</span>
+            </div>
+          </div>
+        `;
+        listEl.append(card);
+      });
+    }
+  
+    // 4) Event-Listener
+    [searchInput, categorySel, sortSel].forEach(el =>
+      el.addEventListener("input", updateView)
+    );
+  });
+  
