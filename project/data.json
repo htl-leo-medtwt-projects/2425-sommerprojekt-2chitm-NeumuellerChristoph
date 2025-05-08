@@ -1,98 +1,99 @@
 [
     {
-        "id": 1,
-        "name": "Cowboy Chili",
-        "image": "imgaes/food/cowboy_chili.jpg",
-        "category": "Hauptgericht",
-        "price": 9.50,
-        "description": "Würziger Eintopf mit Rindfleisch, Bohnen & Chili nach Cowboy-Art"
+      "id": 1,
+      "name": "Salt Pork and Beans",
+      "image": "imgaes/food/salt_pork_beans.jpg",
+      "category": "Hauptgericht",
+      "price": 4.00,
+      "description": "Gesalzener Schweinebauch mit dicken Bohnen über dem Feuer geschmort."
     },
     {
-        "id": 2,
-        "name": "Dutch Oven Beef Stew",
-        "image": "imgaes/food/dutch_oven_stew.jpg",
-        "category": "Hauptgericht",
-        "price": 11.00,
-        "description": "Langsam geschmortes Rindfleisch mit Gemüse im gusseisernen Topf"
+      "id": 2,
+      "name": "Johnnycake",
+      "image": "imgaes/food/johnnycake.jpg",
+      "category": "Beilage",
+      "price": 2.00,
+      "description": "Flacher Maisbrei-Kuchen, in der Pfanne gebraten – einfach und sättigend."
     },
     {
-        "id": 3,
-        "name": "Campfire Beans",
-        "image": "imgaes/food/campfire_beans.jpg",
-        "category": "Beilage",
-        "price": 4.00,
-        "description": "Süß-würzige Bohnen aus der feuerfesten Dose, direkt am Lagerfeuer gegart"
+      "id": 3,
+      "name": "Biscuits and Gravy",
+      "image": "imgaes/food/biscuits_gravy.jpg",
+      "category": "Beilage",
+      "price": 3.50,
+      "description": "Weiche Buttermilchbiscuits mit pfeffriger Soße aus Speckfett und Mehl."
     },
     {
-        "id": 4,
-        "name": "Skillet Cornbread",
-        "image": "imgaes/food/skillet_cornbread.jpg",
-        "category": "Beilage",
-        "price": 3.50,
-        "description": "Locker-fluffiges Maisbrot frisch aus der gusseisernen Pfanne"
+      "id": 4,
+      "name": "Pemmican",
+      "image": "imgaes/food/pemmican.jpg",
+      "category": "Snack",
+      "price": 2.50,
+      "description": "Trockengemisch aus getrocknetem Fleisch, Fett und Beeren – extrem nahrhaft."
     },
     {
-        "id": 5,
-        "name": "Grilled Venison Steak",
-        "image": "imgaes/food/grilled_venison.jpg",
-        "category": "Hauptgericht",
-        "price": 15.00,
-        "description": "Zartes Wildsteak, perfekt gegrillt über offener Glut"
+      "id": 5,
+      "name": "Buffalo Steak",
+      "image": "imgaes/food/buffalo_steak.jpg",
+      "category": "Hauptgericht",
+      "price": 10.00,
+      "description": "Wildbisonsteak, über offenem Feuer gegrillt, herzhaft und zart."
     },
     {
-        "id": 6,
-        "name": "Pan-Fried Trout",
-        "image": "imgaes/food/panfried_trout.jpg",
-        "category": "Hauptgericht",
-        "price": 12.50,
-        "description": "Frisch gefangene Forelle mit Kräuterbutter in der Pfanne gebraten"
+      "id": 6,
+      "name": "Cherokee Stew",
+      "image": "imgaes/food/cherokee_stew.jpg",
+      "category": "Hauptgericht",
+      "price": 5.50,
+      "description": "Eintopf aus Wildgemüse, Mais und gelegentlich etwas Fleisch."
     },
     {
-        "id": 7,
-        "name": "Smoked Sausage Platter",
-        "image": "imgaes/food/smoked_sausage.jpg",
-        "category": "Snack",
-        "price": 7.00,
-        "description": "Auswahl fein geräucherter Würstchen, serviert mit Senf"
+      "id": 7,
+      "name": "Campfire Coffee",
+      "image": "imgaes/food/campfire_coffee.jpg",
+      "category": "Getränk",
+      "price": 1.50,
+      "description": "Starker schwarzer Kaffee, direkt im Topf über der Glut zubereitet."
     },
     {
-        "id": 8,
-        "name": "Cowboy Coffee",
-        "image": "imgaes/food/cowboy_coffee.jpg",
-        "category": "Getränk",
-        "price": 2.50,
-        "description": "Starker schwarzer Kaffee, aufgebrüht direkt im Topf über dem Feuer"
+      "id": 8,
+      "name": "Sarsaparilla",
+      "image": "imgaes/food/sarsaparilla.jpg",
+      "category": "Getränk",
+      "price": 1.75,
+      "description": "Leicht süßer, würziger Wildwurz-Softdrink, beliebt auf Saloons."
     },
     {
-        "id": 9,
-        "name": "Wild Herb Tea",
-        "image": "imgaes/food/wild_herb_tea.jpg",
-        "category": "Getränk",
-        "price": 2.00,
-        "description": "Aromatischer Tee aus gesammelten Wildkräutern und Blüten"
+      "id": 9,
+      "name": "Grilled Trout",
+      "image": "imgaes/food/grilled_trout.jpg",
+      "category": "Hauptgericht",
+      "price": 6.00,
+      "description": "Frisch gefangene Forelle, mit Salz und Kräutern über dem Feuer gegrillt."
     },
     {
-        "id": 10,
-        "name": "Campfire S'mores",
-        "image": "imgaes/food/campfire_smores.jpg",
-        "category": "Dessert",
-        "price": 3.00,
-        "description": "Gegrillter Marshmallow mit Schokolade zwischen zwei Graham-Crackern"
+      "id": 10,
+      "name": "Corn Dodger",
+      "image": "imgaes/food/corn_dodger.jpg",
+      "category": "Snack",
+      "price": 2.00,
+      "description": "Maismehlklößchen, in Fett gebraten – knusprig außen, weich innen."
     },
     {
-        "id": 11,
-        "name": "Dutch Oven Apple Cobbler",
-        "image": "imgaes/food/apple_cobbler.jpg",
-        "category": "Dessert",
-        "price": 4.50,
-        "description": "Warmer Apfelauflauf mit knuspriger Teigkruste aus dem Topf"
+      "id": 11,
+      "name": "Bear Stew",
+      "image": "imgaes/food/bear_stew.jpg",
+      "category": "Hauptgericht",
+      "price": 8.00,
+      "description": "Rustikaler Eintopf aus Bärenfleisch, Wildgemüse und Kräutern."
     },
     {
-        "id": 12,
-        "name": "Frybread Tacos",
-        "image": "imgaes/food/frybread_tacos.jpg",
-        "category": "Snack",
-        "price": 5.50,
-        "description": "Knuspriges Frybread gefüllt mit gewürztem Hackfleisch & Gemüse"
+      "id": 12,
+      "name": "Dried Fruit & Nuts",
+      "image": "imgaes/food/dried_fruit_nuts.jpg",
+      "category": "Snack",
+      "price": 2.25,
+      "description": "Getrocknete Beeren, Apfelringe und Nüsse – ideal für lange Ritte."
     }
-]
+  ]
+  
