@@ -191,28 +191,42 @@ document.addEventListener("DOMContentLoaded", function() {
     const originalItems = Array.from(container.querySelectorAll('.scroll-item'));
     const gap = 60; // muss zum CSS 'gap' passen
     const itemWidth = originalItems[0].getBoundingClientRect().width + gap;
+    const originalCount = originalItems.length;
 
     // Klone vorn und hinten anhängen
-    originalItems.forEach(el => container.appendChild(el.cloneNode(true)));
     originalItems.slice().reverse().forEach(el => container.insertBefore(el.cloneNode(true), container.firstChild));
+    originalItems.forEach(el => container.appendChild(el.cloneNode(true)));
 
-    // Ausgangsposition in der Mitte setzen
-    container.scrollLeft = itemWidth * originalItems.length;
+    // Ausgangsposition: mittlere Original-Items
+    container.scrollLeft = itemWidth * originalCount;
 
-    // Funktion, um aktuell mittiges Item zu markieren
+    // Alle Items (inkl. Klone)
     const items = Array.from(container.querySelectorAll('.scroll-item'));
+
     function updateActive() {
       const centerX = container.scrollLeft + container.offsetWidth / 2;
-      let closest = null, minDist = Infinity;
-      items.forEach(item => {
-        const rect = item.getBoundingClientRect();
+      let closest = null, minDist = Infinity, closestIndex = -1;
+      // Entferne alle Statusklassen
+      items.forEach((it, idx) => {
+        it.classList.remove('prev', 'active', 'next');
+        const rect = it.getBoundingClientRect();
         const offset = container.getBoundingClientRect().left;
         const itemCenter = rect.left + rect.width / 2 - offset + container.scrollLeft;
         const dist = Math.abs(itemCenter - centerX);
-        item.classList.remove('active');
-        if (dist < minDist) { minDist = dist; closest = item; }
+        if (dist < minDist) {
+          minDist = dist;
+          closest = it;
+          closestIndex = idx;
+        }
       });
-      if (closest) closest.classList.add('active');
+      // Setze Klassen: prev, active, next
+      if (closest) {
+        closest.classList.add('active');
+        const prev = items[closestIndex - 1];
+        const next = items[closestIndex + 1];
+        if (prev) prev.classList.add('prev');
+        if (next) next.classList.add('next');
+      }
     }
 
     // Initial und beim Scrollen (debounced)
@@ -222,12 +236,14 @@ document.addEventListener("DOMContentLoaded", function() {
       clearTimeout(scrollTimer);
       scrollTimer = setTimeout(() => {
         updateActive();
-        // Loop-Rücksetzen
+        // Loop-Reset
+        const scrollPos = container.scrollLeft;
+        const jump = itemWidth * originalCount;
         const maxScroll = container.scrollWidth - container.clientWidth;
-        if (container.scrollLeft < itemWidth * 0.5) {
-          container.scrollLeft += itemWidth * originalItems.length;
-        } else if (container.scrollLeft > maxScroll - itemWidth * 0.5) {
-          container.scrollLeft -= itemWidth * originalItems.length;
+        if (scrollPos < jump) {
+          container.scrollLeft += jump;
+        } else if (scrollPos > maxScroll - jump) {
+          container.scrollLeft -= jump;
         }
       }, 100);
     });
@@ -251,8 +267,7 @@ document.addEventListener("DOMContentLoaded", function() {
       img.addEventListener('click', () => {
         const content = modal.querySelector('#modalContent');
         content.innerHTML =
-          `<img src="${img.src}" alt="${img.alt}" ` +
-          `style="max-width:90%;max-height:90%;border-radius:8px;">` +
+          `<img src="${img.src}" alt="${img.alt}" style="max-width:90%;max-height:90%;border-radius:8px;">` +
           `<p style="color:#fff;text-align:center;margin-top:12px;">${img.alt}</p>`;
         modal.style.display = 'flex';
       });
@@ -266,6 +281,7 @@ document.addEventListener("DOMContentLoaded", function() {
     });
   }
 });
+
 
 //   **************************************************************
 //   MiniGame-Funktionalität inkl. Sound
