@@ -180,48 +180,91 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 });
 
-// -----------------------
-// Modal-Popup für Attraktionsbilder (auf erleben.html)
-// -----------------------
-document.addEventListener("DOMContentLoaded", function () {
-    const scrollItems = document.querySelectorAll(".scroll-item img");
-    if (scrollItems.length) {
-        // Modal erstellen
-        const modal = document.createElement("div");
-        modal.id = "imageModal";
-        modal.style.position = "fixed";
-        modal.style.top = "0";
-        modal.style.left = "0";
-        modal.style.width = "100%";
-        modal.style.height = "100%";
-        modal.style.background = "rgba(0, 0, 0, 0.8)";
-        modal.style.display = "none";
-        modal.style.justifyContent = "center";
-        modal.style.alignItems = "center";
-        modal.style.zIndex = "3000";
-        modal.innerHTML = '<span id="closeModal" style="position:absolute; top:20px; right:30px; font-size:40px; cursor:pointer; color:#fff;">&times;</span><div id="modalContent"></div>';
-        document.body.appendChild(modal);
+// ============================
+// Erleben-Seite: Magnetisches, endloses Carousel + Modal-Popup
+// ============================
 
-        scrollItems.forEach(img => {
-            img.style.cursor = "pointer";
-            img.addEventListener("click", function () {
-                const modalContent = document.getElementById("modalContent");
-                modalContent.innerHTML = `<img src="${img.src}" alt="${img.alt}" style="max-width:90%; max-height:90%;"> <p style="color:#fff; text-align:center;">${img.alt}</p>`;
-                modal.style.display = "flex";
-            });
-        });
+document.addEventListener("DOMContentLoaded", function() {
+  const container = document.querySelector('.scroll-container');
+  if (container) {
+    // --- Endlos-Carousel vorbereiten ---
+    const originalItems = Array.from(container.querySelectorAll('.scroll-item'));
+    const gap = 60; // muss zum CSS 'gap' passen
+    const itemWidth = originalItems[0].getBoundingClientRect().width + gap;
 
-        const closeModal = document.getElementById("closeModal");
-        closeModal.addEventListener("click", function () {
-            modal.style.display = "none";
-        });
+    // Klone vorn und hinten anhängen
+    originalItems.forEach(el => container.appendChild(el.cloneNode(true)));
+    originalItems.slice().reverse().forEach(el => container.insertBefore(el.cloneNode(true), container.firstChild));
 
-        modal.addEventListener("click", function (e) {
-            if (e.target === modal) {
-                modal.style.display = "none";
-            }
-        });
+    // Ausgangsposition in der Mitte setzen
+    container.scrollLeft = itemWidth * originalItems.length;
+
+    // Funktion, um aktuell mittiges Item zu markieren
+    const items = Array.from(container.querySelectorAll('.scroll-item'));
+    function updateActive() {
+      const centerX = container.scrollLeft + container.offsetWidth / 2;
+      let closest = null, minDist = Infinity;
+      items.forEach(item => {
+        const rect = item.getBoundingClientRect();
+        const offset = container.getBoundingClientRect().left;
+        const itemCenter = rect.left + rect.width / 2 - offset + container.scrollLeft;
+        const dist = Math.abs(itemCenter - centerX);
+        item.classList.remove('active');
+        if (dist < minDist) { minDist = dist; closest = item; }
+      });
+      if (closest) closest.classList.add('active');
     }
+
+    // Initial und beim Scrollen (debounced)
+    updateActive();
+    let scrollTimer;
+    container.addEventListener('scroll', () => {
+      clearTimeout(scrollTimer);
+      scrollTimer = setTimeout(() => {
+        updateActive();
+        // Loop-Rücksetzen
+        const maxScroll = container.scrollWidth - container.clientWidth;
+        if (container.scrollLeft < itemWidth * 0.5) {
+          container.scrollLeft += itemWidth * originalItems.length;
+        } else if (container.scrollLeft > maxScroll - itemWidth * 0.5) {
+          container.scrollLeft -= itemWidth * originalItems.length;
+        }
+      }, 100);
+    });
+  }
+
+  // --- Modal-Popup für Attraktionsbilder ---
+  const scrollImgs = document.querySelectorAll('.scroll-item img');
+  if (scrollImgs.length) {
+    const modal = document.createElement('div');
+    modal.id = 'imageModal';
+    modal.style.cssText = 
+      'position:fixed;top:0;left:0;width:100%;height:100%;' +
+      'background:rgba(0,0,0,0.8);display:none;justify-content:center;align-items:center;z-index:3000;';
+    modal.innerHTML =
+      '<span id="closeModal" style="position:absolute;top:20px;right:30px;font-size:40px;cursor:pointer;color:#fff;">&times;</span>' +
+      '<div id="modalContent"></div>';
+    document.body.appendChild(modal);
+
+    scrollImgs.forEach(img => {
+      img.style.cursor = 'pointer';
+      img.addEventListener('click', () => {
+        const content = modal.querySelector('#modalContent');
+        content.innerHTML =
+          `<img src="${img.src}" alt="${img.alt}" ` +
+          `style="max-width:90%;max-height:90%;border-radius:8px;">` +
+          `<p style="color:#fff;text-align:center;margin-top:12px;">${img.alt}</p>`;
+        modal.style.display = 'flex';
+      });
+    });
+
+    modal.querySelector('#closeModal').addEventListener('click', () => {
+      modal.style.display = 'none';
+    });
+    modal.addEventListener('click', e => {
+      if (e.target === modal) modal.style.display = 'none';
+    });
+  }
 });
 
 //   **************************************************************
