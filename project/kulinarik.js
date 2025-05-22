@@ -98,63 +98,90 @@ const foods = [
   ];
   
   document.addEventListener("DOMContentLoaded", () => {
-    // 2) Elemente aus dem DOM holen
-    const listEl      = document.getElementById("foodList");
-    const searchInput = document.getElementById("searchInput");
-    const categorySel = document.getElementById("categoryFilter");
-    const sortSel     = document.getElementById("sortSelect");
-  
-    // 3) Sortieren
-    function sortFoods(arr) {
-      const mode = sortSel.value;
-      return arr.slice().sort((a, b) => {
-        if (mode === "name-asc")   return a.name.localeCompare(b.name);
-        if (mode === "name-desc")  return b.name.localeCompare(a.name);
-        if (mode === "price-asc")  return a.price - b.price;
-        if (mode === "price-desc") return b.price - a.price;
-        return 0;
-      });
-    }
-  
-    // 4) Filtern & Rendern
-    function updateView() {
-      const q   = searchInput.value.trim().toLowerCase();
-      const cat = categorySel.value;
-      let filtered = foods.filter(f => {
-        const matchName = f.name.toLowerCase().includes(q);
-        const matchCat  = cat === "all" || f.category === cat;
-        return matchName && matchCat;
-      });
-      filtered = sortFoods(filtered);
-      render(filtered);
-    }
-  
-    function render(items) {
-      listEl.innerHTML = "";
-      items.forEach(f => {
-        const card = document.createElement("div");
-        card.className = "food-card";
-        card.innerHTML = `
-          <img src="${f.image}" alt="${f.name}">
-          <div class="food-card-content">
-            <h4>${f.name}</h4>
-            <p>${f.description}</p>
-            <div class="food-card-footer">
-              <span class="price">${f.price.toFixed(2)} €</span>
-              <span class="category">${f.category}</span>
-            </div>
+  const listEl        = document.getElementById("foodList");
+  const searchInput   = document.getElementById("searchInput");
+  const categorySel   = document.getElementById("categoryFilter");
+  const sortSel       = document.getElementById("sortSelect");
+
+  // 2) Favoriten aus localStorage
+  const FAVORITES_KEY = "kulinarikFavorites";
+  let favorites = JSON.parse(localStorage.getItem(FAVORITES_KEY)) || [];
+
+  // 3) Funktion zum Umschalten
+  function toggleFavorite(id) {
+    const idx = favorites.indexOf(id);
+    if (idx >= 0) favorites.splice(idx, 1);
+    else           favorites.push(id);
+    localStorage.setItem(FAVORITES_KEY, JSON.stringify(favorites));
+  }
+
+  // 4) Sortieren wie gehabt
+  function sortFoods(arr) {
+    /* … dein vorhandenes sortFoods … */
+    const mode = sortSel.value;
+    return arr.slice().sort((a,b) => {
+      if (mode==="name-asc")  return a.name.localeCompare(b.name);
+      if (mode==="name-desc") return b.name.localeCompare(a.name);
+      if (mode==="price-asc") return a.price-b.price;
+      if (mode==="price-desc")return b.price-a.price;
+      return 0;
+    });
+  }
+
+  // 5) Filter + Favoriten-Fall
+  function updateView() {
+    const q   = searchInput.value.trim().toLowerCase();
+    const cat = categorySel.value;
+    let filtered = foods.filter(f => {
+      const byName = f.name.toLowerCase().includes(q);
+      const byCat  = (cat==="all")
+                   || (cat==="favorites" && favorites.includes(f.id))
+                   || (f.category===cat);
+      return byName && byCat;
+    });
+    filtered = sortFoods(filtered);
+    render(filtered);
+  }
+
+  // 6) Rendering mit Sternchen
+  function render(items) {
+    listEl.innerHTML = "";
+    items.forEach(f => {
+      const isFav = favorites.includes(f.id);
+      const card = document.createElement("div");
+      card.className = "food-card";
+      card.innerHTML = `
+        <img src="${f.image}" alt="${f.name}">
+        <img src="imgaes/food/${ isFav ? 'greyStarFull.png' : 'greyStarEmpty.png'}"
+             class="favorite-star"
+             data-id="${f.id}" alt="Favorit">
+        <div class="food-card-content">
+          <h4>${f.name}</h4>
+          <p>${f.description}</p>
+          <div class="food-card-footer">
+            <span class="price">${f.price.toFixed(2)} €</span>
+            <span class="category">${f.category}</span>
           </div>
-        `;
-        listEl.appendChild(card);
+        </div>
+      `;
+      listEl.appendChild(card);
+    });
+
+    // 7) Sternchen-Listener
+    document.querySelectorAll(".favorite-star").forEach(star => {
+      star.addEventListener("click", () => {
+        const id = parseInt(star.dataset.id);
+        toggleFavorite(id);
+        updateView();
       });
-    }
-  
-    // 5) Event-Listener für Controls
-    [searchInput, categorySel, sortSel].forEach(el =>
-      el.addEventListener("input", updateView)
-    );
-  
-    // 6) Initiales Rendern aller Gerichte
-    updateView();
-  });
-  
+    });
+  }
+
+  // 8) Events
+  [searchInput, categorySel, sortSel].forEach(el =>
+    el.addEventListener("input", updateView)
+  );
+
+  // 9) Initial anzeigen
+  updateView();
+});
