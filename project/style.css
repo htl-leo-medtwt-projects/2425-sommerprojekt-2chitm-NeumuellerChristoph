@@ -307,6 +307,20 @@ body {
     color: #007BFF;
 }
 
+.scroll-item.prev {
+  transform: perspective(600px) rotateY(30deg) scale(0.8);
+  opacity: 0.5;
+}
+.scroll-item.active {
+  transform: scale(1.1);
+  opacity: 1;
+}
+.scroll-item.next {
+  transform: perspective(600px) rotateY(-30deg) scale(0.8);
+  opacity: 0.5;
+}
+
+
 /* =========================================================
    ======================  ERLEBEN SITE  ====================
    ========================================================= */

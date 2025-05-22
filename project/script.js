@@ -184,72 +184,86 @@ document.addEventListener("DOMContentLoaded", function () {
 // Erleben-Seite: Magnetisches, endloses Carousel + Modal-Popup
 // ============================
 
-document.addEventListener("DOMContentLoaded", function() {
+// Erleben-Seite: Endlos-Carousel mit Magnet-Snapping, Auto-Scroll & Modal-Popup
+
+document.addEventListener("DOMContentLoaded", () => {
   const container = document.querySelector('.scroll-container');
   if (container) {
-    // --- Endlos-Carousel vorbereiten ---
+    // Basis-Items
     const originalItems = Array.from(container.querySelectorAll('.scroll-item'));
-    const gap = 60; // muss zum CSS 'gap' passen
+    const gap = 60; // passt zum CSS gap
     const itemWidth = originalItems[0].getBoundingClientRect().width + gap;
-    const originalCount = originalItems.length;
+    const count = originalItems.length;
 
-    // Klone vorn und hinten anhängen
-    originalItems.slice().reverse().forEach(el => container.insertBefore(el.cloneNode(true), container.firstChild));
+    // Klone vor und hinter Original-Items für endlos
+    originalItems.slice().reverse()
+      .forEach(el => container.insertBefore(el.cloneNode(true), container.firstChild));
     originalItems.forEach(el => container.appendChild(el.cloneNode(true)));
 
-    // Ausgangsposition: mittlere Original-Items
-    container.scrollLeft = itemWidth * originalCount;
+    // Startposition: Mitte der Originale
+    container.scrollLeft = itemWidth * count;
 
-    // Alle Items (inkl. Klone)
     const items = Array.from(container.querySelectorAll('.scroll-item'));
+    let autoTimer;
 
+    // Magnet-Snapping & 3D-Klassen
     function updateActive() {
       const centerX = container.scrollLeft + container.offsetWidth / 2;
-      let closest = null, minDist = Infinity, closestIndex = -1;
-      // Entferne alle Statusklassen
-      items.forEach((it, idx) => {
-        it.classList.remove('prev', 'active', 'next');
-        const rect = it.getBoundingClientRect();
+      let closestIdx = 0, minDist = Infinity;
+      items.forEach((item, idx) => {
+        item.classList.remove('prev','active','next');
+        const rect = item.getBoundingClientRect();
         const offset = container.getBoundingClientRect().left;
-        const itemCenter = rect.left + rect.width / 2 - offset + container.scrollLeft;
+        const itemCenter = rect.left + rect.width/2 - offset + container.scrollLeft;
         const dist = Math.abs(itemCenter - centerX);
-        if (dist < minDist) {
-          minDist = dist;
-          closest = it;
-          closestIndex = idx;
-        }
+        if (dist < minDist) { minDist = dist; closestIdx = idx; }
       });
-      // Setze Klassen: prev, active, next
-      if (closest) {
-        closest.classList.add('active');
-        const prev = items[closestIndex - 1];
-        const next = items[closestIndex + 1];
-        if (prev) prev.classList.add('prev');
-        if (next) next.classList.add('next');
-      }
+      const active = items[closestIdx];
+      active.classList.add('active');
+      if (items[closestIdx-1]) items[closestIdx-1].classList.add('prev');
+      if (items[closestIdx+1]) items[closestIdx+1].classList.add('next');
+      // Magnet: zentriere automatisch
+      container.scrollTo({ left: active.offsetLeft - container.offsetWidth/2 + active.offsetWidth/2, behavior: 'smooth' });
     }
 
-    // Initial und beim Scrollen (debounced)
+    // Initial und Scroll-Event
     updateActive();
+    container.addEventListener('scroll', () => {
+      clearTimeout(autoTimer);
+      clearTimeout(scrollTimer);
+      autoTimer = setTimeout(updateActive, 200);
+    });
+
+    // Auto-Scroll alle 3s
+    setInterval(() => {
+      container.scrollBy({ left: itemWidth, behavior: 'smooth' });
+    }, 3000);
+
+    // Pfeiltasten Navigation
+    document.addEventListener('keydown', e => {
+      if (e.key === 'ArrowRight') {
+        container.scrollBy({ left: itemWidth, behavior: 'smooth' });
+      } else if (e.key === 'ArrowLeft') {
+        container.scrollBy({ left: -itemWidth, behavior: 'smooth' });
+      }
+    });
+
+    // Loop Reset (debounced)
     let scrollTimer;
     container.addEventListener('scroll', () => {
       clearTimeout(scrollTimer);
       scrollTimer = setTimeout(() => {
-        updateActive();
-        // Loop-Reset
-        const scrollPos = container.scrollLeft;
-        const jump = itemWidth * originalCount;
         const maxScroll = container.scrollWidth - container.clientWidth;
-        if (scrollPos < jump) {
-          container.scrollLeft += jump;
-        } else if (scrollPos > maxScroll - jump) {
-          container.scrollLeft -= jump;
+        if (container.scrollLeft < itemWidth * 0.5) {
+          container.scrollLeft += itemWidth * count;
+        } else if (container.scrollLeft > maxScroll - itemWidth * 0.5) {
+          container.scrollLeft -= itemWidth * count;
         }
-      }, 100);
+      }, 400);
     });
   }
 
-  // --- Modal-Popup für Attraktionsbilder ---
+  // Modal-Popup für Attraktionsbilder
   const scrollImgs = document.querySelectorAll('.scroll-item img');
   if (scrollImgs.length) {
     const modal = document.createElement('div');
@@ -273,12 +287,8 @@ document.addEventListener("DOMContentLoaded", function() {
       });
     });
 
-    modal.querySelector('#closeModal').addEventListener('click', () => {
-      modal.style.display = 'none';
-    });
-    modal.addEventListener('click', e => {
-      if (e.target === modal) modal.style.display = 'none';
-    });
+    modal.querySelector('#closeModal').addEventListener('click', () => modal.style.display = 'none');
+    modal.addEventListener('click', e => { if (e.target === modal) modal.style.display = 'none'; });
   }
 });
 
