@@ -469,7 +469,7 @@ body {
 }
 
 .food-card:hover {
-    transform: translateY(-8px);
+    transform: translateY(8px);
     box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
 }
 
@@ -532,8 +532,8 @@ body {
     position: absolute;
     top: 8px;
     right: 8px;
-    width: 24px;
-    height: 24px;
+    width: 1%;
+    height: 1%;
     cursor: pointer;
     transition: transform 0.2s;
 }
