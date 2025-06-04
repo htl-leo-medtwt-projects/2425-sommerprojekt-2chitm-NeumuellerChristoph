@@ -298,11 +298,8 @@ document.addEventListener("DOMContentLoaded", () => {
 //   **************************************************************  
 
 document.addEventListener("DOMContentLoaded", function () {
-    // --- 1) Audio-Element für Schuss-Sound ---
-    const shotSound = document.createElement("audio");
-    document.body.appendChild(shotSound);
 
-    // --- 2) Revolver-Selector ---
+    // --- 1) Revolver-Selector ---
     let selectedRevolver = null;
     const revolverSelector = document.getElementById("revolverSelector");
     const revolverOptions = document.querySelectorAll(".revolver-option");
@@ -383,7 +380,7 @@ document.addEventListener("DOMContentLoaded", function () {
         // Reset aller Platten
         plates.forEach(p => {
             p.classList.remove("active");
-            delete p.dataset.clicked;
+            delete p.dataset.clicked; 
         });
         // Alle durch – Ergebnis anzeigen
         if (remainingPlates.length === 0) {
