@@ -528,19 +528,21 @@ body {
     position: relative;
 }
 
-.favorite-star {
-    position: absolute;
-    top: 8px;
-    right: 8px;
-    width: 1%;
-    height: 1%;
-    cursor: pointer;
-    transition: transform 0.2s;
+/* Favoriten-Stern oben rechts – deutlich verkleinert */
+img.favorite-star {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 20px;   /* gewünschte Breite */
+  height: 20px;  /* gewünschte Höhe */
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+.favorite-star:hover {
+  transform: scale(1.2);
 }
 
-.favorite-star:hover {
-    transform: scale(1.2);
-}
+
 
 /* =========================================================
    ======================  FOOTER  =========================
