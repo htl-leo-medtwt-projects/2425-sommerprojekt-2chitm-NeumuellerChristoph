@@ -10,6 +10,43 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Rye&display=swap" rel="stylesheet">
+
+  <style>
+    /* NAVBAR‐Anpassung */
+    @media (max-width: 768px) {
+      #navBarBackground { height: 120px; }
+      .navBarContainer a { font-size: 32px; }
+      #navBarLogo { height: 80px; width: 80px; }
+    }
+    /* Minigame‐Container verkleinern */
+    @media (max-width: 768px) {
+      #minigameContainer {
+        width: 90vw;
+      }
+      .game-plate {
+        width: 30vw;
+        max-width: 120px;
+        height: 30vw;
+        max-height: 120px;
+      }
+    }
+    @media (max-width: 480px) {
+      #minigameContainer {
+        width: 100vw;
+        padding: 10px;
+      }
+      .game-plate {
+        width: 25vw;
+        max-width: 100px;
+        height: 25vw;
+        max-height: 100px;
+      }
+      #startMinigame {
+        font-size: 18px;
+        padding: 8px 12px;
+      }
+    }
+  </style>
 </head>
 
 <body>

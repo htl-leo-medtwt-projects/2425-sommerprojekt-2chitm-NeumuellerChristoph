@@ -11,6 +11,45 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Rye&display=swap" rel="stylesheet">
+
+    <style>
+    /* NAVBAR‐Shrink auf Mobil */
+    @media (max-width: 768px) {
+      #navBarBackground { height: 120px; }
+      .navBarContainer a { font-size: 32px; }
+      #navBarLogo { height: 80px; width: 80px; }
+    }
+    /* Titel‐Text etwas kleiner */
+    @media (max-width: 480px) {
+      .erleben-title h1 {
+        font-size: 32px;
+      }
+    }
+    /* Carousel: Höhe anpassen, Abstand reduzieren */
+    @media (max-width: 768px) {
+      .scroll-container {
+        gap: 40px;               /* kleineres Gap */
+        padding: 10px 0;
+      }
+      .scroll-item {
+        width: 80vw;             /* statt 60vw */
+        max-width: 300px;
+      }
+    }
+    @media (max-width: 480px) {
+      .scroll-container {
+        gap: 20px;
+        padding: 5px 0;
+      }
+      .scroll-item {
+        width: 90vw;
+        max-width: 250px;
+      }
+      .scroll-item.active {
+        transform: scale(1.05);
+      }
+    }
+  </style>
 </head>
 
 <body>

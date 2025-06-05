@@ -13,6 +13,60 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Rye&display=swap" rel="stylesheet">
+
+    <style>
+    /* NAVBAR‐Anpassung */
+    @media (max-width: 768px) {
+      #navBarBackground { height: 120px; }
+      .navBarContainer a { font-size: 32px; }
+      #navBarLogo { height: 80px; width: 80px; }
+    }
+    /* Title‐Text kürzer, kleinere Schrift */
+    @media (max-width: 480px) {
+      .kulinarik-title h1 {
+        font-size: 32px;
+      }
+      .kulinarik-title p {
+        font-size: 14px;
+      }
+    }
+    /* Controls: auf Mobil untereinander */
+    @media (max-width: 768px) {
+      #foodControls {
+        flex-direction: column;
+        gap: 12px;
+      }
+      .control input,
+      .control select {
+        width: 100%;
+      }
+    }
+    /* Grid: Einspaltig auf schmalen Geräten */
+    @media (max-width: 768px) {
+      .food-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+      .food-card img {
+        height: 200px; /* fixierte Bildhöhe für Konsistenz */
+        object-fit: cover;
+      }
+    }
+    @media (max-width: 480px) {
+      .food-card-content h4 {
+        font-size: 18px;
+      }
+      .food-card-content p {
+        font-size: 12px;
+      }
+      .food-card-footer .price {
+        font-size: 16px;
+      }
+      .food-card-footer .category {
+        font-size: 12px;
+      }
+    }
+  </style>
 </head>
 
 <body>

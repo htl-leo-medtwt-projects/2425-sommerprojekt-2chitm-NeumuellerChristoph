@@ -9,6 +9,45 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Rye&display=swap" rel="stylesheet">
+
+    <style>
+    /* NAVBAR: auf kleinen Bildschirmen schrumpfen */
+    @media (max-width: 768px) {
+      #navBarBackground {
+        height: 120px;              /* statt 180px */
+      }
+      .navBarContainer a {
+        font-size: 32px;            /* statt 48px */
+      }
+      #navBarLogo {
+        height: 80px;               /* statt 126px */
+        width: 80px;
+      }
+    }
+    /* HERO‐BILD: 100% Breite beibehalten, aber weniger Höhe */
+    @media (max-width: 768px) {
+      .hero img {
+        max-height: 50vh;
+        object-fit: cover;
+      }
+    }
+    /* Zigzag‐Sektion: auf einspaltig umschalten */
+    @media (max-width: 768px) {
+      .zigzag-item {
+        flex-direction: column !important;
+      }
+      .zigzag-image, .zigzag-text {
+        padding: 10px;
+      }
+    }
+    /* Footer‐Icons: skalieren */
+    @media (max-width: 480px) {
+      .social-media img {
+        width: 24px;
+        height: 24px;
+      }
+    }
+  </style>
 </head>
 <body>
     <div id="navBarBackground">

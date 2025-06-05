@@ -141,6 +141,7 @@ const foods = [
     });
     filtered = sortFoods(filtered);
     render(filtered);
+    
   }
 
   // 6) Rendering mit Sternchen

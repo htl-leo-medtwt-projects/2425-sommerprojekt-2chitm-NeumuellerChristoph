@@ -27,6 +27,44 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Rye&display=swap" rel="stylesheet">
+
+  <style>
+    /* NAVBAR‐Anpassung */
+    @media (max-width: 768px) {
+      #navBarBackground { height: 120px; }
+      .navBarContainer a { font-size: 32px; }
+      #navBarLogo { height: 80px; width: 80px; }
+    }
+    /* Buchen‐Map: 100% Breite, reduzierte Höhe */
+    @media (max-width: 768px) {
+      .buchen-map-section img {
+        max-width: 100%;
+        margin-top: 5vh;
+      }
+    }
+    /* Booking‐Panel: auf Mobil einst spaltig und scrollbar */
+    @media (max-width: 768px) {
+      #bookingPanel {
+        width: 100%;
+        left: 0 !important;
+        top: auto;
+        bottom: 0;
+        height: 60vh;
+        border-top-left-radius: 12px;
+        border-top-right-radius: 12px;
+        overflow-y: auto;
+      }
+    }
+    /* Tabelle & Formular im Panel: auf schmalen Bildschirmen */
+    @media (max-width: 480px) {
+      #bookingTable, #bookingTable td {
+        font-size: 14px;
+      }
+      #startDate, #endDate, #purchase, #addBooking {
+        font-size: 14px;
+      }
+    }
+  </style>
 </head>
 
 <body>
